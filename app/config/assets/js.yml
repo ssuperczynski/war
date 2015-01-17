@@ -6,7 +6,7 @@ assetic:
         angular_js:
             inputs:
                 - '%kernel.root_dir%/../bower_components/angular/angular.js'
-#        frontend_js:
-#            inputs:
-#               - '@MainFrontendBundle/Resources/public/js/*'
-#               - '@MainFrontendBundle/Resources/public/js/*/*'
+        frontend_js:
+            inputs:
+               - '@MainFrontendBundle/Resources/public/js/*'
+               - '@MainFrontendBundle/Resources/public/js/*/*'

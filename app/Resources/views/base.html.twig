@@ -43,7 +43,7 @@
     </div>
 </nav>
 
-<div class="container theme-showcase" role="main" style="margin-top: 50px">
+<div ng-app="war.dashboard" class="container theme-showcase" role="main" style="margin-top: 50px">
     {% block body %}
     {% endblock %}
 </div>
@@ -52,14 +52,15 @@
     {% javascripts
     '@jquery_js'
     '@angular_js'
+    '@frontend_js'
 
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
-    {#<script>#}
-        {#angular.module('configuration', [])#}
-                {#.constant('BASE_END_POINT', '{{ app.request.getSchemeAndHttpHost() ~ app.request.baseUrl }}');#}
-    {#</script>#}
+    <script>
+        angular.module('configuration', [])
+                .constant('BASE_END_POINT', '{{ app.request.getSchemeAndHttpHost() ~ app.request.baseUrl }}');
+    </script>
 {% endblock %}
 </body>
 </html>

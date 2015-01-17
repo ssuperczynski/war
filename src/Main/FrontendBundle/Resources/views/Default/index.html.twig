@@ -3,9 +3,9 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
-    <div class="row">
+    <div class="row" ng-controller="CountersCtrl">
     	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            counters
+            <span ng-bind="soldierCounter()"></span>
     	</div>
     </div>
 {% endblock %}
