@@ -1,0 +1,5 @@
+assetic:
+    assets:
+        bootstrap_css:
+            inputs:
+                - '%kernel.root_dir%/../bower_components/bootstrap/dist/css/bootstrap.css'

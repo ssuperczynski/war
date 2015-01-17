@@ -1,0 +1,3 @@
+main_frontend_homepage:
+    path:     /
+    defaults: { _controller: MainFrontendBundle:Default:index }
