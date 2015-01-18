@@ -5,3 +5,6 @@ main_frontend:
 app:
     resource: @MainFrontendBundle/Controller/
     type:     annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
