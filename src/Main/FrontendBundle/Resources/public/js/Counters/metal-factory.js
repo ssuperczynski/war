@@ -3,11 +3,11 @@
 
     angular
         .module('war.dashboard')
-        .factory('SoldierFactory', SoldierFactory);
+        .factory('MetalFactory', MetalFactory);
 
-    SoldierFactory.$inject = ['$http', 'BASE_END_POINT'];
+    MetalFactory.$inject = ['$http', 'BASE_END_POINT'];
 
-    function SoldierFactory($http, BASE_END_POINT) {
+    function MetalFactory($http, BASE_END_POINT) {
 
         var levels = {
             1: 0.1,

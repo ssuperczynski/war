@@ -5,9 +5,9 @@
         .module('war.dashboard')
         .controller('CountersCtrl', CountersCtrl);
 
-    CountersCtrl.$inject = ['$scope', '$interval', 'SoldierFactory'];
+    CountersCtrl.$inject = ['$scope', '$interval', 'EndPointFactory', 'SoldierFactory'];
 
-    function CountersCtrl($scope, $interval, SoldierFactory) {
+    function CountersCtrl($scope, $interval, EndPointFactory, SoldierFactory) {
 
         $scope.soldierCounter = function () {
             return soldierCounter.getCounter();
@@ -27,8 +27,8 @@
         };
 
         function init() {
-            SoldierFactory.get()
-                .then(function(res){
+            EndPointFactory.get()
+                .then(function (res) {
                     setInitialCounters(res);
                     $interval(function () {
                         soldierCounter.setCounter();
@@ -42,11 +42,11 @@
             var now = moment(),
                 last = moment(res.data.date),
                 diff = now.diff(last, 's');
-            soldierCounter.amount = res.data.concrete + diff * SoldierFactory.levels[soldierCounter.factory.level];
+            soldierCounter.amount = res.data.soldier + diff * SoldierFactory.levels[soldierCounter.factory.level];
         }
 
         init();
     }
 
-
 })();
+
