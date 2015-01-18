@@ -20,7 +20,7 @@ compile:
 	php app/console assetic:dump
 
 watch:
-	php app/console assetic:dump --watch
+	php app/console assetic:watch
 
 bower-install:
 	bower prune

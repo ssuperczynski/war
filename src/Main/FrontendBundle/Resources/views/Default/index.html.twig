@@ -5,7 +5,12 @@
 {% block body %}
     <div class="row" ng-controller="CountersCtrl">
     	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <span ng-bind="soldierCounter()"></span>
+            <h3>
+                <span class="label label-default" ng-bind="soldierCounter()"></span>
+            </h3>
+            {#<h3>#}
+                {#<span class="label label-default" ng-bind="points"></span>#}
+            {#</h3>#}
     	</div>
     </div>
 {% endblock %}

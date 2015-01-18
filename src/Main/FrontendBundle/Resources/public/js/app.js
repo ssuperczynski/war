@@ -1,7 +1,9 @@
 (function(){
     'use strict';
 
-    angular.module('war.dashboard', []);
+    angular.module('war.dashboard', [
+        'war'
+    ]);
 
     var app = angular.module('war', [
         'configuration',

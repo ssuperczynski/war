@@ -49,18 +49,17 @@
 </div>
 
 {% block javascripts %}
-    {% javascripts
-    '@jquery_js'
-    '@angular_js'
-    '@frontend_js'
-
-    %}
+    {% javascripts '@jquery_js' '@angular_js' '@moment_js' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
     <script>
-        angular.module('configuration', [])
+        angular
+                .module('configuration', [])
                 .constant('BASE_END_POINT', '{{ app.request.getSchemeAndHttpHost() ~ app.request.baseUrl }}');
     </script>
+    {% javascripts '@frontend_js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 </body>
 </html>

@@ -5,38 +5,44 @@
         .module('war.dashboard')
         .controller('CountersCtrl', CountersCtrl);
 
-    CountersCtrl.$inject = ['$scope', '$interval'];
+    CountersCtrl.$inject = ['$scope', '$interval', 'SoldierFactory'];
 
-    function CountersCtrl($scope, $interval) {
+    function CountersCtrl($scope, $interval, SoldierFactory) {
 
         $scope.soldierCounter = function () {
             return soldierCounter.getCounter();
         };
 
         var soldierCounter = {
-            amount : 1000,
+            amount: 0,
             factory: {
-                level: 4,
-                map: {
-                    1: 0.1,
-                    2: 0.2,
-                    3: 0.3,
-                    4: 0.4
-                }
-
+                level: 6
             },
-            getCounter: function() {
+            getCounter: function () {
                 return Math.round(this.amount);
             },
-            setCounter: function(val) {
-                this.amount = this.amount + 1 * soldierCounter.factory.map[soldierCounter.factory.level];
+            setCounter: function (data) {
+                this.amount = this.amount + 1 * SoldierFactory.levels[soldierCounter.factory.level];
             }
         };
 
         function init() {
-            $interval( function() {
-                soldierCounter.setCounter();
-            }, 1000);
+            SoldierFactory.get()
+                .then(function(res){
+                    setInitialCounters(res);
+                    $interval(function () {
+                        soldierCounter.setCounter();
+                    }, 1000);
+                });
+        }
+
+        function setInitialCounters(res) {
+            // soldierCounter.amount =
+            // amount from db + ((NOW() - last modification timestamp) *  soldierCounter.factory.map[soldierCounter.factory.level])
+            var now = moment(),
+                last = moment(res.data.date),
+                diff = now.diff(last, 's');
+            soldierCounter.amount = res.data.concrete + diff * SoldierFactory.levels[soldierCounter.factory.level];
         }
 
         init();
