@@ -19,7 +19,7 @@ class PointsController extends Controller
 //        $user = $this->getUser();
         $points = $this->getDoctrine()->getManager()
             ->getRepository('MainFrontendBundle:Points')
-            ->findOneBy(['id' => 6]);
+            ->findOneBy(['id' => 1]);
 
         return new JsonResponse($points);
     }
