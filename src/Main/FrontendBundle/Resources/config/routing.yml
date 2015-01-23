@@ -1,4 +1,4 @@
-main_frontend_homepage:
+frontend.homepage:
     path:     /
     defaults: { _controller: MainFrontendBundle:Default:index }
 
@@ -6,3 +6,8 @@ frontend.get_points:
     path: /points
     defaults: { _controller: MainFrontendBundle:Points:get }
     methods: [GET]
+
+# SECURITY
+logout_profile:
+    path: /logout
+    defaults: { _controller: MainFrontendBundle:Default:logoutProfile }

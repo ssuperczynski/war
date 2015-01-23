@@ -39,6 +39,25 @@
                 <li class="active"><a href="#">Main</a></li>
 
             </ul>
+            <ul class="nav navbar-nav navbar-right navbar-user">
+                <li class="dropdown">
+                    {#<a data-toggle="dropdown" class="dropdown-toggle" href="#"><b class="caret">Username</b></a>#}
+                    {#<ul class="dropdown-menu">#}
+                        {#<li class="divider"></li>#}
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            {#<li>#}
+                                <a href="{{ path('logout_profile') }}" class="pull-right">
+                                    <i class="fa fa-lock"></i> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                </a>
+                            {#</li>#}
+                        {% else %}
+                            <a href="{{ path('fos_user_security_login') }}" class="pull-right">
+                                <i class="fa fa-lock"></i> {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
+                            </a>
+                        {% endif %}
+                    {#</ul>#}
+                </li>
+            </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>

@@ -3,10 +3,11 @@
 namespace Main\FrontendBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Main\FrontendBundle\Entity\Points;
 
-class LoadPointsData implements FixtureInterface
+class LoadPointsData implements FixtureInterface, OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -30,6 +31,6 @@ class LoadPointsData implements FixtureInterface
      */
     public function getOrder()
     {
-        return 100;
+        return 110;
     }
 }

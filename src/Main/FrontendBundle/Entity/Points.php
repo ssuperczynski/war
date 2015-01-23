@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Points
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Main\FrontendBundle\Entity\PointsRepository")
+ * @ORM\Entity(repositoryClass="Main\FrontendBundle\Entity\Repository\PointsRepository")
  */
 class Points implements \JsonSerializable
 {
