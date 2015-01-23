@@ -5,7 +5,7 @@ namespace Main\FrontendBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Main\FrontendBundle\Entity\Points;
+use Main\CommonBundle\Entity\Points;
 
 class LoadPointsData implements FixtureInterface, OrderedFixtureInterface
 {

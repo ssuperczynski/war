@@ -21,19 +21,4 @@ class DefaultController extends Controller
 
         return $this->render('MainFrontendBundle:Default:landing.html.twig');
     }
-
-    /**
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function logoutProfileAction()
-    {
-        $tokenStorage = $this->get('security.token_storage');
-        $sessionService = $this->get('session');
-
-        $message = 'Wylogowano pomyślnie!';
-        $sessionService->getFlashBag()->add('notice', $message);
-        $tokenStorage->setToken(null);
-
-        return $this->redirect($this->generateUrl('frontend.homepage'));
-    }
 }

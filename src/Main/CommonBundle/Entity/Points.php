@@ -1,6 +1,6 @@
 <?php
 
-namespace Main\FrontendBundle\Entity;
+namespace Main\CommonBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Points
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Main\FrontendBundle\Entity\Repository\PointsRepository")
+ * @ORM\Entity(repositoryClass="Main\CommonBundle\Entity\Repository\PointsRepository")
  */
 class Points implements \JsonSerializable
 {

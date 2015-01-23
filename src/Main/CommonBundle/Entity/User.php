@@ -1,7 +1,7 @@
 <?php
 // src/Acme/UserBundle/Entity/User.php
 
-namespace Main\FrontendBundle\Entity;
+namespace Main\CommonBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;

@@ -7,7 +7,3 @@ frontend.get_points:
     defaults: { _controller: MainFrontendBundle:Points:get }
     methods: [GET]
 
-# SECURITY
-logout_profile:
-    path: /logout
-    defaults: { _controller: MainFrontendBundle:Default:logoutProfile }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Main\FrontendBundle\Entity\Repository;
+namespace Main\CommonBundle\Entity\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

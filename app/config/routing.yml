@@ -1,3 +1,7 @@
+main_common:
+    resource: "@MainCommonBundle/Resources/config/routing.yml"
+    prefix:   /
+
 main_frontend:
     resource: "@MainFrontendBundle/Resources/config/routing.yml"
     prefix:   /
