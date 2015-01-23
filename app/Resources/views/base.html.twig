@@ -63,6 +63,29 @@
 </nav>
 
 <div ng-app="war.dashboard" class="container theme-showcase" role="main" style="margin-top: 50px">
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED")  %}
+        <div class="row" ng-controller="CountersCtrl">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div style="margin-top: 20px"></div>
+                <div class="well well-sm">
+                    <div class="row">
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <soldier-counter></soldier-counter>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <concrete-counter></concrete-counter>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <food-counter></food-counter>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <iron-counter></iron-counter>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
     {% block body %}
     {% endblock %}
 </div>

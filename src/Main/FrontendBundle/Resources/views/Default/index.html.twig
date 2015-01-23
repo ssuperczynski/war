@@ -3,45 +3,5 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
-    <div class="row" ng-controller="CountersCtrl">
-    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div style="margin-top: 20px"></div>
-            <div class="well well-sm">
-                <div class="row">
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                        <h3>
-                            <img src="{{ asset('bundles/mainfrontend/images/soldier.png') }}"
-                                 title="{{ 'Soldiers'|trans }}"
-                                 alt="{{ 'Soldiers'|trans }}" />
-                            <span class="label label-default" ng-bind="soldierCounter()"></span>
-                        </h3>
-                    </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                        <h3>
-                            <img src="{{ asset('bundles/mainfrontend/images/cement.png') }}"
-                                 title="{{ 'Concrete'|trans }}"
-                                 alt="{{ 'Concrete'|trans }}" />
-                            <span class="label label-default" ng-bind="concreteCounter()"></span>
-                        </h3>
-                    </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                        <h3>
-                            <img src="{{ asset('bundles/mainfrontend/images/food.png') }}"
-                                 title="{{ 'Food'|trans }}"
-                                 alt="{{ 'Food'|trans }}" />
-                            <span class="label label-default" ng-bind="foodCounter()"></span>
-                        </h3>
-                    </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                        <h3>
-                            <img src="{{ asset('bundles/mainfrontend/images/factory.png') }}"
-                                 title="{{ 'Iron'|trans }}"
-                                 alt="{{ 'Iron'|trans }}" />
-                            <span class="label label-default" ng-bind="ironCounter()"></span>
-                        </h3>
-                    </div>
-                </div>
-            </div>
-    	</div>
-    </div>
+    <h1>Body</h1>
 {% endblock %}

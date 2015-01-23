@@ -7,25 +7,6 @@
 
     CountersCtrl.$inject = ['$scope', 'CounterService'];
 
-    function CountersCtrl($scope, CounterService) {
-
-        $scope.soldierCounter = function () {
-            return CounterService.getSoldierCounter();
-        };
-
-        $scope.concreteCounter = function () {
-            return CounterService.getConcreteCounter();
-        };
-
-        $scope.foodCounter = function () {
-            return CounterService.getFoodCounter();
-        };
-
-        $scope.ironCounter = function () {
-            return CounterService.getIronCounter();
-        };
-
-
-    }
+    function CountersCtrl($scope, CounterService) {}
 
 })();
