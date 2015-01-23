@@ -20,6 +20,7 @@ composer-install:
 
 compile:
 	php app/console assetic:dump
+	php app/console assets:install web
 
 watch:
 	php app/console assetic:watch

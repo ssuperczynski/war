@@ -13,3 +13,4 @@ assetic:
             inputs:
                - '@MainFrontendBundle/Resources/public/js/*'
                - '@MainFrontendBundle/Resources/public/js/*/*'
+               - '@MainFrontendBundle/Resources/public/js/*/*/*'
