@@ -19,8 +19,8 @@ class LoadPointsData implements FixtureInterface, OrderedFixtureInterface
         $points->setUserId(1);
         $points->setConcrete(100);
         $points->setSoldier(10);
-        $points->setFood(10);
-        $points->setMetal(0);
+        $points->setFood(100);
+        $points->setIron(10);
 
         $manager->persist($points);
         $manager->flush();

@@ -16,7 +16,7 @@ class Points implements \JsonSerializable
     const JSON_USER = 'user';
     const JSON_SOLDIER = 'soldier';
     const JSON_FOOD = 'food';
-    const JSON_METAL = 'metal';
+    const JSON_IRON = 'iron';
     const JSON_CONCRETE = 'concrete';
     const JSON_DATE = 'date';
     /**
@@ -52,9 +52,9 @@ class Points implements \JsonSerializable
     /**
      * @var integer
      *
-     * @ORM\Column(name="metal", type="integer")
+     * @ORM\Column(name="iron", type="integer")
      */
-    private $metal;
+    private $iron;
 
     /**
      * @var integer
@@ -181,29 +181,6 @@ class Points implements \JsonSerializable
     }
 
     /**
-     * Set metal
-     *
-     * @param integer $metal
-     * @return Points
-     */
-    public function setMetal($metal)
-    {
-        $this->metal = $metal;
-
-        return $this;
-    }
-
-    /**
-     * Get metal
-     *
-     * @return integer 
-     */
-    public function getMetal()
-    {
-        return $this->metal;
-    }
-
-    /**
      * Set concrete
      *
      * @param integer $concrete
@@ -232,9 +209,32 @@ class Points implements \JsonSerializable
             self::JSON_USER => $this->getUserId(),
             self::JSON_SOLDIER => $this->getSoldier(),
             self::JSON_FOOD => $this->getFood(),
-            self::JSON_METAL => $this->getMetal(),
+            self::JSON_IRON => $this->getIron(),
             self::JSON_CONCRETE => $this->getConcrete(),
             self::JSON_DATE => $this->getDate()->format('Y-m-d H:i')
         ];
+    }
+
+    /**
+     * Set iron
+     *
+     * @param integer $iron
+     * @return Points
+     */
+    public function setIron($iron)
+    {
+        $this->iron = $iron;
+
+        return $this;
+    }
+
+    /**
+     * Get iron
+     *
+     * @return integer 
+     */
+    public function getIron()
+    {
+        return $this->iron;
     }
 }

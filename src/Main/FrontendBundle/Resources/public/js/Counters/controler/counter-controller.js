@@ -17,6 +17,14 @@
             return CounterService.getConcreteCounter();
         };
 
+        $scope.foodCounter = function () {
+            return CounterService.getFoodCounter();
+        };
+
+        $scope.ironCounter = function () {
+            return CounterService.getIronCounter();
+        };
+
 
     }
 
