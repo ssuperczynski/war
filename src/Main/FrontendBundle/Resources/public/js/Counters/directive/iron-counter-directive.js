@@ -22,10 +22,7 @@
                 };
             },
             transclude: true,
-            template: '<h3>' +
-            '<img src="bundles/mainfrontend/images/factory.png" /> ' +
-            '<span class="label label-default" ng-bind="getIronCounter()"></span>' +
-            '</h3>'
+            template: '<h4>\n    <img src="bundles/mainfrontend/images/factory.png" />\n    <span class="label label-default" ng-bind="getIronCounter()"></span>\n</h4>'
         };
     }
 })();

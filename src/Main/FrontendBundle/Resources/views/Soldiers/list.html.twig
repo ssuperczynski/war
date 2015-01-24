@@ -7,26 +7,115 @@
     <h1>Soldiers</h1>
     <div class="row">
         <div class="col-xs-3 col-lg-3">
-            <h2>Szeregowy</h2>
-            <span class="pull-right">
-              <button type="button"
-                      class="btn btn-default btn-sm"
-                      ng-click="openAside('bottom')">
-                  Down <span class="glyphicon glyphicon-arrow-up"></span>
-              </button>
-            </span>
+            <div class="thumbnail">
+                <div style="height: 120px;">
+                    <img src="bundles/mainfrontend/images/private.png"
+                         alt="Private"
+                         ng-click="openAside('bottom')"
+                         style="cursor: pointer">
+                    <div class="pull-right">
+                        <h4>
+                            <span class="label label-default">100</span>
+                            <label>
+                                <input type="number" style="width: 50px" min="1" max="999"/>
+                            </label>
+                            <button class="btn btn-success btn-xs">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </h4>
+                    </div>
+                </div>
+                <div class="caption">
+                    <h3>Private</h3>
+                    <p><span class="label label-warning">0.3/h</span></p>
+                </div>
+            </div>
         </div>
         <div class="col-xs-3 col-lg-3">
-            <h2>Kapral</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <div class="thumbnail">
+                <div style="height: 120px;">
+                    <img src="bundles/mainfrontend/images/corporal.png"
+                         alt="Corporal"
+                         ng-click="openAside('bottom')"
+                         style="cursor: pointer">
+                    <div class="pull-right">
+                        <h4>
+                            <span class="label label-default">1</span>
+                            <label>
+                                <input type="number" style="width: 50px" min="1" max="999"/>
+                            </label>
+                            <button class="btn btn-success btn-xs">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </h4>
+                    </div>
+                </div>
+                <div class="caption">
+                    <h3>Corporal</h3>
+                    <p>
+                        <span class="label label-warning">0.4/h</span>
+                        <span class="label label-success">1 tank</span>
+                    </p>
+                </div>
+            </div>
         </div>
         <div class="col-xs-3 col-lg-3">
-            <h2>Sierżant</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <div class="thumbnail">
+                <div style="height: 120px;">
+                    <img src="bundles/mainfrontend/images/sergeant.png"
+                         alt="Sergeant"
+                         ng-click="openAside('bottom')"
+                         style="cursor: pointer">
+                    <div class="pull-right">
+                        <h4>
+                            <span class="label label-default">1</span>
+                            <label>
+                                <input type="number" style="width: 50px" min="1" max="999"/>
+                            </label>
+                            <button class="btn btn-success btn-xs">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </h4>
+                    </div>
+                </div>
+                <div class="caption">
+                    <h3>Sergeant</h3>
+                    <p>
+                        <span class="label label-warning">0.3/h</span>
+                        <span class="label label-success">1 tank</span>
+                        <span class="label label-default">1 soldier</span>
+                    </p>
+                </div>
+            </div>
         </div>
         <div class="col-xs-3 col-lg-3">
-            <h2>Plutonowy</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <div class="thumbnail">
+                <div style="height: 120px;">
+                    <img src="bundles/mainfrontend/images/warrant-officer.png"
+                         alt="Warrant Officer"
+                         ng-click="openAside('bottom')"
+                         style="cursor: pointer">
+                    <div class="pull-right">
+                        <h4>
+                            <span class="label label-default">1</span>
+                            <label>
+                                <input type="number" style="width: 50px" min="1" max="999"/>
+                            </label>
+                            <button class="btn btn-success btn-xs">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </h4>
+                    </div>
+                </div>
+                <div class="caption">
+                    <h3>Warrant Officer</h3>
+                    <p>
+                        <span class="label label-warning">0.3/h</span>
+                        <span class="label label-danger">1 hawk</span>
+                        <span class="label label-default">1 soldier</span>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

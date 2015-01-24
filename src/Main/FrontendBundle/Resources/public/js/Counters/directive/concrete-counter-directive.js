@@ -22,10 +22,7 @@
                 };
             },
             transclude: true,
-            template: '<h3>' +
-            '<img src="bundles/mainfrontend/images/cement.png" /> ' +
-            '<span class="label label-default" ng-bind="getConcreteCounter()"></span>' +
-            '</h3>'
+            template: '<h4>\n    <img src="bundles/mainfrontend/images/cement.png" />\n    <span class="label label-default" ng-bind="getConcreteCounter()"></span>\n</h4>'
         };
     }
 })();

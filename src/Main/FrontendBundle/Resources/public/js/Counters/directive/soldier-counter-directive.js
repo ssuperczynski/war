@@ -22,10 +22,7 @@
                 };
             },
             transclude: true,
-            template: '<h3>' +
-            '<img src="bundles/mainfrontend/images/soldier.png" /> ' +
-            '<span class="label label-default" ng-bind="soldierCounter()"></span>' +
-            '</h3>'
+            template: '<h4>\n    <img src="bundles/mainfrontend/images/soldier.png" />\n    <span class="label label-default" ng-bind="soldierCounter()"></span>\n</h4>'
         };
     }
 })();
