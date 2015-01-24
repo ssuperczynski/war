@@ -23,7 +23,7 @@ compile:
 	php app/console assets:install web
 	mkdir -p web/css && cp -au bower_components/bootstrap/dist/css/bootstrap.css.map web/css/
 	mkdir -p web/fonts && cp -au bower_components/bootstrap/fonts/* web/fonts/
-	mkdir -p web/partials && cp -au src/Main/FrontendBundle/Resources/public/js/**/partials/*.html web/partials/
+	rm -rf web/partials && cp -R web/bundles/mainfrontend/partials/ web/partials/
 
 watch:
 	php app/console assetic:watch
@@ -36,5 +36,4 @@ permissions:
 	HTTPDUSER=`ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
 	sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs
 	sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs
-
 

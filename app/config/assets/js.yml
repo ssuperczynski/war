@@ -6,6 +6,9 @@ assetic:
         angular_js:
             inputs:
                 - '%kernel.root_dir%/../bower_components/angular/angular.js'
+        angular_route_js:
+            inputs:
+                - '%kernel.root_dir%/../bower_components/angular-route/angular-route.js'
         moment_js:
             inputs:
                 - '%kernel.root_dir%/../bower_components/moment/moment.js'

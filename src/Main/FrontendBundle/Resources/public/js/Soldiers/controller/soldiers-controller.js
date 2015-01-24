@@ -10,7 +10,7 @@
     function SoldiersCtrl($scope, $aside) {
         $scope.openAside = function(position) {
             $aside.open({
-                templateUrl: 'partials/soldiers-serial.html',
+                templateUrl: 'partials/Soldiers/serial.html',
                 placement: position,
                 size: 'lg',
                 backdrop: false,
