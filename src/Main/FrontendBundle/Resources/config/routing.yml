@@ -1,8 +1,12 @@
-frontend.homepage:
+frontend.view.homepage:
     path:     /
     defaults: { _controller: MainFrontendBundle:Default:index }
 
-frontend.get_points:
+frontend.view.soldiers:
+    path:     /soldiers
+    defaults: { _controller: MainFrontendBundle:Soldiers:show }
+
+frontend.rest.get_points:
     path: /points
     defaults: { _controller: MainFrontendBundle:Points:get }
     methods: [GET]

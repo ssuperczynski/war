@@ -21,7 +21,9 @@ composer-install:
 compile:
 	php app/console assetic:dump
 	php app/console assets:install web
-	cp -au bower_components/bootstrap/dist/css/bootstrap.css.map web/css/
+	mkdir -p web/css && cp -au bower_components/bootstrap/dist/css/bootstrap.css.map web/css/
+	mkdir -p web/fonts && cp -au bower_components/bootstrap/fonts/* web/fonts/
+	mkdir -p web/partials && cp -au src/Main/FrontendBundle/Resources/public/js/**/partials/*.html web/partials/
 
 watch:
 	php app/console assetic:watch

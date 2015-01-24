@@ -1,4 +1,4 @@
 # SECURITY
-logout_profile:
+common.view.logout_profile:
     path: /logout
     defaults: { _controller: MainCommonBundle:Default:logoutProfile }

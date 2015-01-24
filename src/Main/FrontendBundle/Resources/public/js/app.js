@@ -2,12 +2,22 @@
     'use strict';
 
     angular.module('war.dashboard', [
-        'war'
+        'war',
+        'ui.bootstrap'
+    ]);
+
+    angular.module('war.soldiers', [
+        'war',
+        'ui.bootstrap'
     ]);
 
     var app = angular.module('war', [
         'configuration',
-        'war.dashboard'
+        'ui.bootstrap',
+        'ngAside',
+
+        'war.dashboard',
+        'war.soldiers'
     ]);
 
     app.config(['$interpolateProvider', function($interpolateProvider) {

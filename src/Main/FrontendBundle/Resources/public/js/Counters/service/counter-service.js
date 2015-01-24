@@ -54,7 +54,7 @@
         var foodCounter = {
             amount: 0,
             factory: {
-                level: 5
+                level: 1
             }
         };
 

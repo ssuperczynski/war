@@ -10,7 +10,8 @@
     <title>{% block title %}Welcome!{% endblock %}</title>
     {% block stylesheets %}
         {% stylesheets
-        '@bootstrap_css'
+            '@bootstrap_css'
+            '@angular_aside_css'
 
         %}
         <link rel="stylesheet" href="{{ asset_url }}" />
@@ -36,7 +37,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Main</a></li>
+                <li><a href="{{ path('frontend.view.homepage') }}">Main</a></li>
+                <li><a href="{{ path('frontend.view.soldiers') }}">Soldiers</a></li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-user">
@@ -46,8 +48,8 @@
                         {#<li class="divider"></li>#}
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                             {#<li>#}
-                                <a href="{{ path('logout_profile') }}" class="pull-right">
-                                    <i class="fa fa-lock"></i> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                <a href="{{ path('common.view.logout_profile') }}" class="pull-right">
+                                    <b>{{ app.user.username }}</b><i class="fa fa-lock"></i> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                                 </a>
                             {#</li>#}
                         {% else %}
@@ -91,8 +93,14 @@
 </div>
 
 {% block javascripts %}
-    {% javascripts '@jquery_js' '@angular_js' '@moment_js' %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% javascripts
+        '@jquery_js'
+        '@angular_js'
+        '@moment_js'
+        '@angular_bootstrap_js'
+        '@angular_aside_js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
     <script>
         angular
@@ -100,7 +108,7 @@
                 .constant('BASE_END_POINT', '{{ app.request.getSchemeAndHttpHost() ~ app.request.baseUrl }}');
     </script>
     {% javascripts '@frontend_js' %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
+        <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
 </body>

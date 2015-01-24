@@ -9,6 +9,13 @@ assetic:
         moment_js:
             inputs:
                 - '%kernel.root_dir%/../bower_components/moment/moment.js'
+        angular_bootstrap_js:
+            inputs:
+                - '%kernel.root_dir%/../bower_components/angular-bootstrap/ui-bootstrap.js'
+                - '%kernel.root_dir%/../bower_components/angular-bootstrap/ui-bootstrap-tpls.js'
+        angular_aside_js:
+            inputs:
+                - '%kernel.root_dir%/../bower_components/angular-aside/dist/js/angular-aside.js'
         frontend_js:
             inputs:
                - '@MainFrontendBundle/Resources/public/js/*'

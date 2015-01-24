@@ -3,3 +3,6 @@ assetic:
         bootstrap_css:
             inputs:
                 - '%kernel.root_dir%/../bower_components/bootstrap/dist/css/bootstrap.css'
+        angular_aside_css:
+            inputs:
+                - '%kernel.root_dir%/../bower_components/angular-aside/dist/css/angular-aside.css'
