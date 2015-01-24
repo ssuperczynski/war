@@ -6,6 +6,10 @@ frontend.view.soldiers:
     path:     /soldiers
     defaults: { _controller: MainFrontendBundle:Soldiers:show }
 
+frontend.view.vehicles:
+    path:     /vehicles
+    defaults: { _controller: MainFrontendBundle:Vehicles:show }
+
 frontend.rest.get_points:
     path: /points
     defaults: { _controller: MainFrontendBundle:Points:get }
