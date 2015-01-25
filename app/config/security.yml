@@ -22,9 +22,14 @@ security:
             anonymous:    true
 
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/login$,     role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register,   role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting,  role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/,     role: ROLE_ADMIN }
 
-        - { path: ^/soldiers$, role: IS_AUTHENTICATED_FULLY }
+        # Views
+        - { path: ^/soldiers$,  role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/vehicles$,  role: IS_AUTHENTICATED_FULLY }
+
+        # REST API
+        - { path: ^/points,     role: IS_AUTHENTICATED_FULLY }

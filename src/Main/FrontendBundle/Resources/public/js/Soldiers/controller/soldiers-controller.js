@@ -2,30 +2,55 @@
     'use strict';
 
     angular
-        .module('war.dashboard')
+        .module('war.soldiers')
         .controller('SoldiersCtrl', SoldiersCtrl);
 
-    SoldiersCtrl.$inject = ['$scope', '$aside'];
+    SoldiersCtrl.$inject = ['$scope', '$aside', 'SoldiersFactory', 'SoldiersService', '$interval'];
 
-    function SoldiersCtrl($scope, $aside) {
-        $scope.openAside = function(position) {
+    function SoldiersCtrl($scope, $aside, SoldiersFactory, SoldiersService, $interval) {
+
+        $scope.add = function () {
+            $scope.$broadcast('timer-add-cd-seconds', SoldiersFactory.Private.time * $scope.soldier.Private.amount);
+            SoldiersService.addSoldiers($scope.soldier.Private.amount);
+            $scope.timeSummary = SoldiersService.getTotal();
+        };
+
+        $scope.elapsed = 1;
+        $scope.timeSummary =  SoldiersService.getTotal();
+        $scope.soldier = SoldiersFactory;
+
+        $scope.openAside = function (position) {
             $aside.open({
                 templateUrl: 'partials/Soldiers/serial.html',
                 placement: position,
                 size: 'lg',
                 backdrop: false,
-                controller: function($scope, $modalInstance) {
-                    $scope.ok = function(e) {
+                controller: function ($scope, $modalInstance) {
+                    $scope.ok = function (e) {
                         $modalInstance.close();
                         e.stopPropagation();
                     };
-                    $scope.cancel = function(e) {
+                    $scope.cancel = function (e) {
                         $modalInstance.dismiss();
                         e.stopPropagation();
                     };
                 }
             })
+        };
+
+        function elapsedTime() {
+            $interval(function () {
+                SoldiersService.setElapsed();
+                if(SoldiersService.getElapsed() > 0){
+
+                } else{
+                    // refresh page
+                }
+            }, 1000);
         }
+
+        elapsedTime();
+
     }
 
 })();

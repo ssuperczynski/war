@@ -19,6 +19,9 @@ assetic:
         angular_aside_js:
             inputs:
                 - '%kernel.root_dir%/../bower_components/angular-aside/dist/js/angular-aside.js'
+        angular_timer_js:
+            inputs:
+                - '%kernel.root_dir%/../bower_components/angular-timer/dist/angular-timer.js'
         frontend_js:
             inputs:
                - '@MainFrontendBundle/Resources/public/js/*'

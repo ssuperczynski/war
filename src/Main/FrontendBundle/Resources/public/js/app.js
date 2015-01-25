@@ -8,7 +8,8 @@
 
     angular.module('war.soldiers', [
         'war',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'timer'
     ]);
 
     var app = angular.module('war', [
