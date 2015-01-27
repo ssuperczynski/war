@@ -16,8 +16,13 @@
             soldiersTotal: 1
         };
 
+        function addToQueue(params) {
+            return $http.post(BASE_END_POINT + '/soldiers/queue', params);
+        }
+
         return {
-            Private: Private
+            addToQueue  : addToQueue,
+            Private     : Private
         };
 
     }

@@ -11,19 +11,23 @@
 
         $scope.add = function () {
             $scope.$broadcast('timer-add-cd-seconds', SoldiersFactory.Private.time * $scope.soldier.Private.amount);
-            SoldiersService.addSoldiers($scope.soldier.Private.amount);
-            $scope.timeSummary = SoldiersService.getTotal();
+            //SoldiersService.addSoldiers($scope.soldier.Private.amount);
+            //$scope.timeSummary = SoldiersService.getTotal();
+            SoldiersFactory.addToQueue({
+                amount: $scope.soldier.Private.amount,
+                type: 'private'
+            });
         };
 
         $scope.elapsed = 1;
-        $scope.timeSummary =  SoldiersService.getTotal();
+        $scope.timeSummary = SoldiersService.getTotal();
         $scope.soldier = SoldiersFactory;
 
         $scope.openAside = function (position) {
             $aside.open({
                 templateUrl: 'partials/Soldiers/serial.html',
                 placement: position,
-                size: 'lg',
+                size: 'sm',
                 backdrop: false,
                 controller: function ($scope, $modalInstance) {
                     $scope.ok = function (e) {
@@ -41,9 +45,9 @@
         function elapsedTime() {
             $interval(function () {
                 SoldiersService.setElapsed();
-                if(SoldiersService.getElapsed() > 0){
+                if (SoldiersService.getElapsed() > 0) {
 
-                } else{
+                } else {
                     // refresh page
                 }
             }, 1000);

@@ -6,6 +6,11 @@ frontend.view.soldiers:
     path:     /soldiers
     defaults: { _controller: MainFrontendBundle:Soldiers:show }
 
+frontend.rest.add_soldier_to_queue:
+    path: /soldiers/queue
+    defaults: { _controller: MainFrontendBundle:Soldiers:addSoldierToQueue }
+    methods: [POST]
+
 frontend.view.vehicles:
     path:     /vehicles
     defaults: { _controller: MainFrontendBundle:Vehicles:show }
