@@ -1,4 +1,4 @@
-all: clear-cache db fixtures bower-install compile
+all: composer-install clear-cache db fixtures bower-install compile
 
 db:
 	php app/console doctrine:database:drop --force
