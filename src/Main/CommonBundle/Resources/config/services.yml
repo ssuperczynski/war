@@ -1,4 +1,10 @@
 services:
-#    main_common.example:
-#        class: Main\CommonBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    split_file:
+        class: Main\CommonBundle\Services\SplitFile
+        arguments:
+            - @old_sound_rabbit_mq.split_file_producer
+    process_node:
+        class: Main\CommonBundle\Services\ReadNode
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @snc_redis.default

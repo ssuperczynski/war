@@ -72,3 +72,39 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Main\CommonBundle\Entity\User
+
+old_sound_rabbit_mq:
+    connections:
+        default:
+            host:     '127.0.0.1'
+            port:     5672
+            user:     'test'
+            password: 'test'
+            vhost:    '/'
+            lazy:     false
+#            connection_timeout: 3
+#            read_write_timeout: 3
+#
+#            # requires php-amqplib v2.4.1+ and PHP5.4+
+#            keepalive: false
+#
+#            # requires php-amqplib v2.4.1+
+#            heartbeat: 0
+    producers:
+        split_file:
+            connection:       default
+            queue_options: { name: 'file_nodes', durable: true }
+            exchange_options: { name: 'file_nodes', type: direct }
+    consumers:
+        read_node:
+            connection:       default
+            exchange_options: {name: 'file_nodes', type: direct}
+            queue_options:    {name: 'file_nodes'}
+            callback:         process_node
+
+snc_redis:
+    clients:
+        default:
+            type: predis
+            alias: default
+            dsn: redis://localhost

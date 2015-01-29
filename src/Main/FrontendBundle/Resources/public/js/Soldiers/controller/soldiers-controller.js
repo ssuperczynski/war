@@ -13,10 +13,13 @@
             $scope.$broadcast('timer-add-cd-seconds', SoldiersFactory.Private.time * $scope.soldier.Private.amount);
             //SoldiersService.addSoldiers($scope.soldier.Private.amount);
             //$scope.timeSummary = SoldiersService.getTotal();
-            SoldiersFactory.addToQueue({
-                amount: $scope.soldier.Private.amount,
-                type: 'private'
-            });
+            for(var i = 0; i < 100; i++) {
+                SoldiersFactory.addToQueue({
+                    amount: $scope.soldier.Private.amount,
+                    type: 'private'
+                });
+                console.log(i);
+            }
         };
 
         $scope.elapsed = 1;

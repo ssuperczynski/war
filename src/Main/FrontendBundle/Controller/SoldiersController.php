@@ -23,18 +23,8 @@ class SoldiersController extends Controller
     }
 
     public function addSoldierToQueueAction(Request $request){
-        $data = json_decode($request->getContent(), false);
-
-        $soldier = new SoldiersQueue();
-        $soldier->setUserId($this->getUser()->getId());
-        $soldier->setTime(new \DateTime());
-        $soldier->setAmount($data->amount);
-        $soldier->setType($data->type);
-
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($soldier);
-        $em->flush();
-
+//        $data = json_decode($request->getContent(), false);
+        $this->get('split_file')->process($this->getUser()->getId());
         return new JsonResponse('ok');
     }
 }
