@@ -11,18 +11,36 @@
 
         var Private = {
             time: 6,
-            food: 0.3,
             amount: 1,
-            soldiersTotal: 1
+            soldiers: 1,
+            timeSummary: 1
         };
+
+        function getTimeSummary () {
+            return Private.timeSummary;
+        }
+
+        function setTimeSummary (incr) {
+            Private.timeSummary = Private.timeSummary + incr;
+        }
+
+        function getSoldiers () {
+            return Private.soldiers;
+        }
+
+        function setSoldiers (incr) {
+            Private.soldiers = Private.soldiers + incr;
+        }
 
         function addToQueue(params) {
             return $http.post(BASE_END_POINT + '/soldiers/queue', params);
         }
 
         return {
-            addToQueue  : addToQueue,
-            Private     : Private
+            addToQueue: addToQueue,
+            Private: Private,
+            getTimeSummary: getTimeSummary,
+            setTimeSummary: setTimeSummary
         };
 
     }

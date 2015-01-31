@@ -5,25 +5,31 @@
         .module('war.soldiers')
         .controller('SoldiersCtrl', SoldiersCtrl);
 
-    SoldiersCtrl.$inject = ['$scope', '$aside', 'SoldiersFactory', 'SoldiersService', '$interval'];
+    SoldiersCtrl.$inject = ['$scope', '$aside', 'SoldiersFactory', 'SoldiersService'];
 
-    function SoldiersCtrl($scope, $aside, SoldiersFactory, SoldiersService, $interval) {
+    function SoldiersCtrl($scope, $aside, SoldiersFactory, SoldiersService) {
+
+        $scope.timeSummary = 1;
+        $scope.elapsed = 0;
 
         $scope.add = function () {
+            // add time to counter
             $scope.$broadcast('timer-add-cd-seconds', SoldiersFactory.Private.time * $scope.soldier.Private.amount);
-            //SoldiersService.addSoldiers($scope.soldier.Private.amount);
-            //$scope.timeSummary = SoldiersService.getTotal();
-            for(var i = 0; i < 100; i++) {
-                SoldiersFactory.addToQueue({
-                    amount: $scope.soldier.Private.amount,
-                    type: 'private'
-                });
-                console.log(i);
-            }
+            SoldiersFactory.addToQueue({
+                amount: $scope.soldier.Private.amount,
+                type: 'private'
+            }).then(function(){
+                SoldiersFactory.setTimeSummary(SoldiersFactory.Private.time * $scope.soldier.Private.amount);
+            })
         };
+        $scope.$on('timer-tick', function(event, data) {
+            if($scope.elapsed == 0){
+                SoldiersFactory.Private.timeSummary = 1;
+            }
+            $scope.elapsed = data.millis / 1000;
+            $scope.timeSummary = SoldiersFactory.getTimeSummary();
+        });
 
-        $scope.elapsed = 1;
-        $scope.timeSummary = SoldiersService.getTotal();
         $scope.soldier = SoldiersFactory;
 
         $scope.openAside = function (position) {
@@ -44,19 +50,6 @@
                 }
             })
         };
-
-        function elapsedTime() {
-            $interval(function () {
-                SoldiersService.setElapsed();
-                if (SoldiersService.getElapsed() > 0) {
-
-                } else {
-                    // refresh page
-                }
-            }, 1000);
-        }
-
-        elapsedTime();
 
     }
 

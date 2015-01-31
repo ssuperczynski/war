@@ -24,7 +24,8 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                             <div class="pull-right">
                                                 <h4>
-                                                    <span class="label label-default">100</span>
+                                                    <span class="label label-default"
+                                                            ng-bind="soldier.Private.soldiers"></span>
                                                     <label>
                                                         <input
                                                                 type="number"
@@ -34,7 +35,7 @@
                                                                 ng-model="soldier.Private.amount"/>
                                                     </label>
                                                     <button class="btn btn-success btn-xs"
-                                                            ng-click="add('countdown-timer')"
+                                                            ng-click="add()"
                                                             ng-disabled="!soldier.Private.amount">
                                                         <span class="glyphicon glyphicon-plus"></span>
                                                     </button>
@@ -64,11 +65,10 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                             <progressbar class="progress-striped active"
-                                                         max="timeSummary"
-                                                         value="timeSummary"
+                                                         max="100"
+                                                         value="elapsed/timeSummary*100"
                                                          type="success">
                                             </progressbar>
-                                            [[ elapsed ]] na [[ timeSummary ]]
                                         </div>
                                     </div>
                                 </div>
