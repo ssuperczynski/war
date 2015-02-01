@@ -9,76 +9,7 @@
         <form>
             <div class="row">
                 <div class="col-xs-3 col-lg-3">
-                    <div class="thumbnail">
-                        <div style="height: 120px;">
-                            <div class="row">
-                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                    <img src="bundles/mainfrontend/images/private.png"
-                                         alt="Private"
-                                         ng-click="openAside('bottom')"
-                                         style="cursor: pointer">
-                                </div>
-
-                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <div class="pull-right">
-                                                <h4>
-                                                    <span class="label label-default"
-                                                            ng-bind="soldier.Private.soldiers"></span>
-                                                    <label>
-                                                        <input
-                                                                type="number"
-                                                                style="width: 50px"
-                                                                min="0"
-                                                                max="999"
-                                                                ng-model="soldier.Private.amount"/>
-                                                    </label>
-                                                    <button class="btn btn-success btn-xs"
-                                                            ng-click="add()"
-                                                            ng-disabled="!soldier.Private.amount">
-                                                        <span class="glyphicon glyphicon-plus"></span>
-                                                    </button>
-                                                </h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <h3 class="pull-right" style="height: 28px;">
-                                                <timer interval="1000"
-                                                       countdown="timeSummary"
-                                                       max-time-unit="'hour'">
-                                                    <span ng-show="hours">
-                                                        <span ng-bind="hours"></span>h
-                                                    </span>
-                                                    <span ng-show="minutes">
-                                                        <span ng-bind="minutes"></span>min
-                                                    </span>
-                                                    <span ng-show="seconds > 1">
-                                                        <span ng-bind="seconds"></span>sec
-                                                    </span>
-                                                </timer>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <progressbar class="progress-striped active"
-                                                         max="100"
-                                                         value="elapsed/timeSummary*100"
-                                                         type="success">
-                                            </progressbar>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="caption">
-                            <h3>Private</h3>
-                            <p><span class="label label-warning">0.3/h</span></p>
-                        </div>
-                    </div>
+                    <soldier range="'Private'"></soldier>
                 </div>
                 <div class="col-xs-3 col-lg-3">
                     <div class="thumbnail">
