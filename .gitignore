@@ -45,3 +45,5 @@ npm-debug.log
 node_modules
 
 rabbitmq-c
+
+.sass-cache
