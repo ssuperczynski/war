@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class PointsController
+ * Class SoldiersController
  * @package Main\FrontendBundle\Controller
  */
 class SoldiersController extends Controller
@@ -22,9 +22,11 @@ class SoldiersController extends Controller
         return $this->render('MainFrontendBundle:Soldiers:list.html.twig');
     }
 
-    public function addSoldierToQueueAction(Request $request){
-//        $data = json_decode($request->getContent(), false);
-        $this->get('split_file')->process($this->getUser()->getId());
+    public function addSoldierToQueueAction(Request $request)
+    {
+        $data = json_decode($request->getContent(), false);
+        $this->get('split_file')->process($this->getUser()->getId(), $data->time, $data->range);
+
         return new JsonResponse('ok');
     }
 }

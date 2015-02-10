@@ -17,6 +17,7 @@ class ReadNode implements ConsumerInterface
      * @var Client $redis
      */
     private $redis;
+
     /**
      * @param EntityManager $em
      * @param Client $redis
@@ -32,14 +33,11 @@ class ReadNode implements ConsumerInterface
      */
     public function execute(AMQPMessage $msg)
     {
-        $rand = rand(20, 70);
-        $randNr = rand(1, 100000000);
-
-        for ($i = 0; $i < $rand; $i++) {
+        $json = json_decode($msg->body);
+        for ($i = 0; $i < $json->time; $i++) {
             sleep(1);
-//            echo $msg->body . PHP_EOL;
 
-            $this->redis->rpush('friends', $randNr.'-'.$msg->body);
+            $this->redis->rpush('soldiers', $json->user . '-' . $json->range);
         }
 
     }

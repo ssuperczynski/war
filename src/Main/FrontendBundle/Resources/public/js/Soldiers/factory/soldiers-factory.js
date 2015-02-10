@@ -68,12 +68,14 @@
         function addToQueue(params) {
             soldiers[params.range]['queue'].push({
                 amount: params.amount,
-                queued: true
+                queued: true,
+                range: params.range
             });
             return $http.post(BASE_END_POINT + '/soldiers/queue', params);
         }
 
         return {
+            soldiers: soldiers,
             addToQueue: addToQueue,
             Private: soldiers.Private,
             Corporal: soldiers.Corporal,

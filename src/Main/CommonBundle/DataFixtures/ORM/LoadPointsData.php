@@ -14,15 +14,17 @@ class LoadPointsData implements FixtureInterface, OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $points = new Points();
-        $points->setDate(new \DateTime());
-        $points->setUserId(1);
-        $points->setConcrete(100);
-        $points->setSoldier(10);
-        $points->setFood(100);
-        $points->setIron(10);
+        for ($i = 1; $i <= 3; $i++) {
+            $points = new Points();
+            $points->setDate(new \DateTime());
+            $points->setUserId($i);
+            $points->setConcrete(100);
+            $points->setSoldier(10);
+            $points->setFood(100);
+            $points->setIron(10);
 
-        $manager->persist($points);
+            $manager->persist($points);
+        }
         $manager->flush();
     }
 

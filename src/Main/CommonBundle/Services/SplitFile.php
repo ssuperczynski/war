@@ -18,8 +18,14 @@ class SplitFile
         $this->producer = $producer;
     }
 
-    public function process($userId)
+    public function process($userId, $time, $range)
     {
-        $this->producer->publish($userId);
+        $data = [
+            'user' => $userId,
+            'time' => $time,
+            'range' => $range
+        ];
+
+        $this->producer->publish(json_encode($data));
     }
 }
