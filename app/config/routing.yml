@@ -1,3 +1,7 @@
+main_admin:
+    resource: "@MainAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
 main_common:
     resource: "@MainCommonBundle/Resources/config/routing.yml"
     prefix:   /

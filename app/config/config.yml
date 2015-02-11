@@ -36,7 +36,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ]
+    bundles:        [ 'FOSUserBundle', 'MainAdminBundle', 'MainFrontendBundle' ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -108,3 +108,8 @@ snc_redis:
             type: predis
             alias: default
             dsn: redis://localhost
+
+kreait_firebase:
+  connections:
+    main:
+      host: amber-heat-9116.firebaseio.com

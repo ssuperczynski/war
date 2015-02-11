@@ -1,25 +1,23 @@
 (function(){
     'use strict';
 
-    angular.module('war.dashboard', [
-        'war',
-        'ui.bootstrap'
-    ]);
-
-    angular.module('war.soldiers', [
+    angular.module('war.admin-dashboard', [
         'war',
         'ui.bootstrap',
-        'timer'
+        'firebase',
+        'ngSanitize',
+        'ngCsv',
     ]);
+
 
     var app = angular.module('war', [
         'configuration',
         'ui.bootstrap',
-        'ngAside',
         'firebase',
+        'ngSanitize',
+        'ngCsv',
 
-        'war.dashboard',
-        'war.soldiers'
+        'war.admin-dashboard'
     ]);
 
     app.config(['$interpolateProvider', function($interpolateProvider) {

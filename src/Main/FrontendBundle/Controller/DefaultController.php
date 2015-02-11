@@ -15,6 +15,10 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        if (true === $this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            return $this->render('MainAdminBundle:Default:index.html.twig');
+        }
+
         if (true === $this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->render('MainFrontendBundle:Default:index.html.twig');
         }

@@ -22,7 +22,7 @@
                 };
             },
             transclude: true,
-            template: '<h4>\n    <img src="bundles/mainfrontend/images/food.png" />\n    <span class="label label-default" ng-bind="getFoodCounter()"></span>\n    <span class="label label-success">\n        <span class="glyphicon glyphicon-circle-arrow-up"></span>\n    </span>\n</h4>'
+            template: '<h4>\n    <img src="bundles/mainfrontend/images/food.png" />\n    <span class="label label-default" ng-bind="getFoodCounter()"></span>\n    <!--<span class="label label-success">-->\n        <!--<span class="glyphicon glyphicon-circle-arrow-up"></span>-->\n    <!--</span>-->\n</h4>'
         };
     }
 })();

@@ -22,6 +22,8 @@ class AppKernel extends Kernel
             new Main\CommonBundle\MainCommonBundle(),
             new OldSound\RabbitMqBundle\OldSoundRabbitMqBundle(),
             new Snc\RedisBundle\SncRedisBundle(),
+            new Kreait\FirebaseBundle\KreaitFirebaseBundle(),
+            new Main\AdminBundle\MainAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

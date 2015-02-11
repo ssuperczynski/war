@@ -25,7 +25,7 @@ class SoldiersController extends Controller
     public function addSoldierToQueueAction(Request $request)
     {
         $data = json_decode($request->getContent(), false);
-        $this->get('split_file')->process($this->getUser()->getId(), $data->time, $data->range);
+        $this->get('split_file')->process($this->getUser()->getId(), $data->time, $data->range, $data->amount);
 
         return new JsonResponse('ok');
     }

@@ -1,0 +1,111 @@
+{% extends '@MainAdmin/Default/base.html.twig' %}
+
+{% block title %}Soldiers academy{% endblock %}
+
+{% block body %}
+    <style>
+        @-webkit-keyframes fadeIn { from { opacity:1; } to { opacity:0; } }
+        @-moz-keyframes fadeIn { from { opacity:1; } to { opacity:0; } }
+        @keyframes fadeIn { from { opacity:1; } to { opacity:0; } }
+
+        .up {
+            opacity:0;  /* make things invisible upon start */
+            -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+            -moz-animation:fadeIn ease-in 1;
+            animation:fadeIn ease-in 1;
+
+            -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+            -moz-animation-fill-mode:forwards;
+            animation-fill-mode:forwards;
+
+            -webkit-animation-duration:1s;
+            -moz-animation-duration:1s;
+            animation-duration:1s;
+        }
+
+        .spin{
+            -webkit-transform-origin: 50% 58%;
+            transform-origin:50% 58%;
+            -ms-transform-origin:50% 58%; /* IE 9 */
+            -webkit-animation: spin .8s infinite linear;
+            -moz-animation: spin .8s infinite linear;
+            -o-animation: spin .8s infinite linear;
+            animation: spin .8s infinite linear;
+        }
+
+        @-moz-keyframes spin {
+            from {
+                -moz-transform: rotate(0deg);
+            }
+            to {
+                -moz-transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes spin {
+            from {
+                -webkit-transform: rotate(0deg);
+            }
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <div ng-controller="DashboardCtrl">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <h1>admin</h1>
+                <button class="btn btn-primary btn-sm" ng-click="exportReport()">
+                    Export <span ng-show="loading" class="glyphicon glyphicon-refresh spin"></span>
+                </button>
+                <button type="button" ng-show="showDownload" class="btn btn-primary btn-sm" ng-csv="getArray()" csv-header="['Private', 'Corporal', 'Sergeant', 'Warrant']" filename="report.csv">Download report</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Private</th>
+                            <th>Corporal</th>
+                            <th>Sergeant</th>
+                            <th>Warrant Officer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="soldier in data.data.users" ng-if="$index != 0">
+                            <td>[[ $index ]]</td>
+                            <td ng-init="idPrivate = style[$index + 'Private'] ">
+                                <span ng-class="{'glyphicon glyphicon-arrow-up pull-right up': idPrivate}"></span>
+                                [[ soldier.Private ]]
+                            </td>
+                            <td ng-init="idCorporal = style[$index + 'Corporal'] ">
+                                <span ng-class="{'glyphicon glyphicon-arrow-up pull-right up': idCorporal}"></span>
+                                [[ soldier.Corporal ]]
+                            </td>
+                            <td ng-init="idSergeant = style[$index + 'Sergeant'] ">
+                                <span ng-class="{'glyphicon glyphicon-arrow-up pull-right up': idSergeant}"></span>
+                                [[ soldier.Sergeant ]]
+                            </td>
+                            <td ng-init="idWarrant = style[$index + 'Warrant_Officer'] ">
+                                <span ng-class="{'glyphicon glyphicon-arrow-up pull-right up': idWarrant}"></span>
+                                [[ soldier.Warrant_Officer ]]
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

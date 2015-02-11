@@ -30,6 +30,7 @@ security:
         # Views
         - { path: ^/soldiers$,  role: IS_AUTHENTICATED_FULLY }
         - { path: ^/vehicles$,  role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/dashboard,  role: ROLE_ADMIN }
 
         # REST API
         - { path: ^/points,     role: IS_AUTHENTICATED_FULLY }

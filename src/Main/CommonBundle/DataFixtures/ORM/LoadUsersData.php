@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
-    const LIMIT = 3;
+    const LIMIT = 15;
     /**
      * @var
      */
@@ -31,6 +31,15 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
     public function load(ObjectManager $manager)
     {
         $userManager = $this->container->get('fos_user.user_manager');
+        $this->loadUsers($userManager);
+        $this->loadAdmin($userManager);
+
+        $manager->flush();
+    }
+
+    private function loadUsers($userManager)
+    {
+
         for ($i = 1; $i <= self::LIMIT; $i++) {
             /** @var User $user */
             $user = $userManager->createUser();
@@ -43,7 +52,19 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
             $this->addReference('user' . $i, $user);
             $userManager->updateUser($user);
         }
-        $manager->flush();
+    }
+
+    private function loadAdmin($userManager)
+    {
+        /** @var User $admin */
+        $admin = $userManager->createUser();
+        $admin->setUsername('admin');
+        $admin->setEmail('admin@war.com_test');
+        $admin->setPlainPassword('test');
+        $admin->setEnabled(true);
+        $admin->addRole(User::ROLE_ADMIN);
+
+        $userManager->updateUser($admin);
     }
 
     /**
