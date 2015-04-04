@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
-    const LIMIT = 15;
+    const LIMIT = 300;
     /**
      * @var
      */

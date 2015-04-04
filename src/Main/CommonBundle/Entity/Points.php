@@ -31,9 +31,9 @@ class Points implements \JsonSerializable
     /**
      * @var integer
      *
-     * @ORM\Column(name="user_id", type="integer")
+     * @ORM\OneToOne(targetEntity="Main\CommonBundle\Entity\User")
      */
-    private $userId;
+    private $user;
 
     /**
      * @var integer
@@ -134,28 +134,6 @@ class Points implements \JsonSerializable
         return $this->soldier;
     }
 
-    /**
-     * Set userId
-     *
-     * @param integer $userId
-     * @return Points
-     */
-    public function setUserId($userId)
-    {
-        $this->userId = $userId;
-
-        return $this;
-    }
-
-    /**
-     * Get userId
-     *
-     * @return integer
-     */
-    public function getUserId()
-    {
-        return $this->userId;
-    }
 
     /**
      * Set food
@@ -203,10 +181,13 @@ class Points implements \JsonSerializable
         return $this->concrete;
     }
 
+    /**
+     * @return array
+     */
     public function jsonSerialize(){
         return [
             self::JSON_ID => $this->getId(),
-            self::JSON_USER => $this->getUserId(),
+            self::JSON_USER => $this->getUser()->getId(),
             self::JSON_SOLDIER => $this->getSoldier(),
             self::JSON_FOOD => $this->getFood(),
             self::JSON_IRON => $this->getIron(),
@@ -236,5 +217,28 @@ class Points implements \JsonSerializable
     public function getIron()
     {
         return $this->iron;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Main\CommonBundle\Entity\User $user
+     * @return Points
+     */
+    public function setUser(\Main\CommonBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Main\CommonBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
