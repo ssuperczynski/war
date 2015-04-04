@@ -10,10 +10,12 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
  */
-class User extends BaseUser
+class User extends BaseUser implements \JsonSerializable
 {
     const ROLE_USER = 'ROLE_USER';
     const ROLE_ADMIN = 'ROLE_ADMIN';
+
+    const ID = 'id';
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -21,16 +23,28 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     *
+     */
     public function __construct()
     {
         parent::__construct();
-        // your own logic
+    }
+
+    /**
+     * @return array
+     */
+    public function jsonSerialize()
+    {
+        return [
+            self::ID => $this->getId()
+        ];
     }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {

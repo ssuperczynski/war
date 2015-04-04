@@ -22,4 +22,16 @@ class SerializationTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('id', $points->jsonSerialize());
     }
 
+    /**
+     * @desc Test if User Entity return json
+     */
+    public function testUserSerialization()
+    {
+        $user = new User();
+        $user->setEmail('test@test.com');
+        $user->setUsername('test');
+
+        $this->assertArrayHasKey('id', $user->jsonSerialize());
+    }
+
 }
