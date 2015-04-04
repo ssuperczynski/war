@@ -9,3 +9,9 @@ services:
             - @doctrine.orm.entity_manager
             - @snc_redis.default
             - @service_container
+    soldier_data:
+        class: Main\CommonBundle\Services\SoldierData
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @snc_redis.default
+            - @service_container

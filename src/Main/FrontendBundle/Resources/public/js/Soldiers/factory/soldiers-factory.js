@@ -53,7 +53,7 @@
         };
 
 
-        function setTimeSummary (range, incr) {
+        function setTimeSummary(range, incr) {
             soldiers[range]['timeSummary'] = soldiers[range]['timeSummary'] + incr;
         }
 
@@ -66,6 +66,7 @@
         //}
 
         function addToQueue(params) {
+            console.log(soldiers);
             soldiers[params.range]['queue'].push({
                 amount: params.amount,
                 queued: true,
@@ -74,7 +75,17 @@
             return $http.post(BASE_END_POINT + '/soldiers/queue', params);
         }
 
+        function init() {
+            return $http.get(BASE_END_POINT + '/soldiers/data')
+                .then(function (response) {
+                    angular.forEach(response.data, function (v, k) {
+                        soldiers[k].soldiers = v.soldiers;
+                    });
+                });
+        }
+
         return {
+            init: init,
             soldiers: soldiers,
             addToQueue: addToQueue,
             Private: soldiers.Private,

@@ -19,11 +19,16 @@
                 range: '='
             },
             controller: function ($scope, SoldiersFactory, $firebase) {
-                var ref = new Firebase("https://amber-heat-9116.firebaseio.com/");
+                //var ref = new Firebase("https://amber-heat-9116.firebaseio.com/");
                 // create an AngularFire reference to the data
-                var sync = $firebase(ref);
+                //var sync = $firebase(ref);
                 // download the data into a local object
-                $scope.data = sync.$asObject();
+                //$scope.data = sync.$asObject();
+                init();
+
+                function init() {
+                    SoldiersFactory.init();
+                }
                 $scope.timeSummary = SoldiersFactory[$scope.range]['timeSummary'];
                 $scope.elapsed = 0;
                 // operations when soldier added to queue
@@ -37,6 +42,7 @@
                         SoldiersFactory.setTimeSummary(range, SoldiersFactory[range]['time'] * $scope.soldier[range]['amount']);
                     })
                 };
+                //SoldiersFactory[$scope.range]['soldiers'] = 100000;
                 // operations every second
                 $scope.$on('timer-tick', function (event, data) {
                     // prevent increment counter
@@ -51,6 +57,7 @@
                     if ($scope.elapsed % SoldiersFactory[$scope.range]['time'] == 0 && $scope.elapsed != 0) {
                         SoldiersFactory[$scope.range]['soldiers'] = SoldiersFactory[$scope.range]['soldiers'] + 1;
                         // decrement amount of soldiers in queue
+                        console.log('SoldiersFactory[$scope.range][queue]', SoldiersFactory[$scope.range]);
                         SoldiersFactory[$scope.range]['queue'][0]['amount'] = SoldiersFactory[$scope.range]['queue'][0]['amount'] - 1;
                         if (SoldiersFactory[$scope.range]['queue'][0]['amount'] == 0) {
                             SoldiersFactory[$scope.range]['queue'].shift();

@@ -6,17 +6,25 @@ frontend.view.soldiers:
     path:     /soldiers
     defaults: { _controller: MainFrontendBundle:Soldiers:show }
 
-frontend.rest.add_soldier_to_queue:
-    path: /soldiers/queue
-    defaults: { _controller: MainFrontendBundle:Soldiers:addSoldierToQueue }
-    methods: [POST]
-
 frontend.view.vehicles:
     path:     /vehicles
     defaults: { _controller: MainFrontendBundle:Vehicles:show }
 
-frontend.rest.get_points:
+frontend.view.map:
+    path:     /map
+    defaults: { _controller: MainFrontendBundle:Map:show }
+
+frontend.API.soldiers:
+    path: /soldiers/data
+    defaults: { _controller: MainFrontendBundle:Soldiers:data }
+    methods: [GET]
+
+frontend.API.add_soldier_to_queue:
+    path: /soldiers/queue
+    defaults: { _controller: MainFrontendBundle:Soldiers:addSoldierToQueue }
+    methods: [POST]
+
+frontend.API.get_points:
     path: /points
     defaults: { _controller: MainFrontendBundle:Points:get }
     methods: [GET]
-

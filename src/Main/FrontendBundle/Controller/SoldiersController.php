@@ -2,7 +2,6 @@
 
 namespace Main\FrontendBundle\Controller;
 
-use Main\CommonBundle\Entity\SoldiersQueue;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,5 +27,17 @@ class SoldiersController extends Controller
         $this->get('split_file')->process($this->getUser()->getId(), $data->time, $data->range, $data->amount);
 
         return new JsonResponse('ok');
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function dataAction()
+    {
+
+        $user = $this->getUser()->getId();
+        $points = $this->get('soldier_data')->getAmount($user);
+
+        return new JsonResponse($points);
     }
 }
