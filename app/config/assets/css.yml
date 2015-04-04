@@ -5,7 +5,7 @@ assetic:
                 - '%kernel.root_dir%/../bower_components/bootstrap/dist/css/bootstrap.css'
         frontend_css:
             inputs:
-                - '%kernel.root_dir%/../src/Main/FrontendBundle/Resources/public/css/*.css'
+                - '%kernel.root_dir%/../src/Main/FrontendBundle/Resources/public/css/main.css'
         angular_aside_css:
             inputs:
                 - '%kernel.root_dir%/../bower_components/angular-aside/dist/css/angular-aside.css'

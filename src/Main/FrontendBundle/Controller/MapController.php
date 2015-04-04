@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  * Class PointsController
  * @package Main\FrontendBundle\Controller
  */
-class VehiclesController extends Controller
+class MapController extends Controller
 {
 
     /**
@@ -16,6 +16,6 @@ class VehiclesController extends Controller
      */
     public function showAction()
     {
-        return $this->render('MainFrontendBundle:Vehicles:list.html.twig');
+        return $this->render('MainFrontendBundle:Map:show.html.twig');
     }
 }

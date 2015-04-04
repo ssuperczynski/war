@@ -42,6 +42,7 @@
                     <li><a href="{{ path('frontend.view.homepage') }}">Main</a></li>
                     <li><a href="{{ path('frontend.view.soldiers') }}">Soldiers</a></li>
                     <li><a href="{{ path('frontend.view.vehicles') }}">Vehicles</a></li>
+                    <li><a href="{{ path('frontend.view.map') }}">Map</a></li>
                 </ul>
             {% endif %}
             <ul class="nav navbar-nav navbar-right navbar-user">
@@ -105,6 +106,7 @@
         '@angular_aside_js'
         '@angular_timer_js'
         '@firebase_js'
+        '@d3_js'
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}

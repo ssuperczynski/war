@@ -32,6 +32,9 @@ assetic:
         ngsanitize_js:
             inputs:
                 - '%kernel.root_dir%/../bower_components/angular-sanitize/angular-sanitize.js'
+        d3_js:
+            inputs:
+                - '%kernel.root_dir%/../bower_components/d3/d3.js'
         frontend_js:
             inputs:
                - '@MainFrontendBundle/Resources/public/js/*'
