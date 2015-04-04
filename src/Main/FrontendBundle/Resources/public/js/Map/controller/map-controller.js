@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('war.soldiers')
+        .module('war.map')
         .controller('MapCtrl', MapCtrl);
 
     MapCtrl.$inject = ['$scope'];
@@ -12,7 +12,7 @@
         var width = 960,
             height = 500;
 
-        var vertices = d3.range(300).map(function(d) {
+        var vertices = d3.range(30).map(function (d) {
             return [Math.random() * width, Math.random() * height];
         });
 
@@ -29,12 +29,16 @@
         function redraw() {
             path = path
                 .data(voronoi(vertices), polygon);
-
             path.exit().remove();
 
             path.enter().append("path")
-                .attr("class", function(d, i) { return "q" + (i % 3); })
+                .attr("class", function (d, i) {
+                    return "q" + (i % 3);
+                })
                 .attr("d", polygon)
+                .attr("id", function (d, i) {
+                    return i;
+                })
                 .on("mousedown", mousedown)
                 .on("mouseover", mouseover);
 
@@ -45,18 +49,23 @@
             return "M" + d.join("L") + "Z";
         }
 
+        $scope.showPopover = false;
         function mousedown(d) {
-            console.log('this', this);
+            //console.log('this', this.id);
             this.style.fill = 'red';
-            console.log('down', d);
+            var point = d3.mouse(this),
+                p = {x: point[0], y: point[1]};
+            $scope.showPopover = true;
+            $(".q0, .q1, .q2, .q3").mousedown(function () {
+                $('#popover').css({'top': p.y, 'left': p.x}).fadeIn('fast');
+            });
         }
 
         function mouseover(d) {
-            setTimeout(function(){
+            setTimeout(function () {
                 //console.log('hover', d);
             }, 500);
         }
-
 
     }
 

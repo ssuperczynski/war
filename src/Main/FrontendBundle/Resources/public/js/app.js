@@ -12,6 +12,11 @@
         'timer'
     ]);
 
+    angular.module('war.map', [
+        'war',
+        'ui.bootstrap'
+    ]);
+
     var app = angular.module('war', [
         'configuration',
         'ui.bootstrap',
@@ -19,7 +24,8 @@
         'firebase',
 
         'war.dashboard',
-        'war.soldiers'
+        'war.soldiers',
+        'war.map'
     ]);
 
     app.config(['$interpolateProvider', function($interpolateProvider) {

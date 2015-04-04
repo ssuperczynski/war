@@ -24,6 +24,16 @@ class User extends BaseUser implements \JsonSerializable
     protected $id;
 
     /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $coordinateX;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $coordinateY;
+
+    /**
      *
      */
     public function __construct()
@@ -49,5 +59,51 @@ class User extends BaseUser implements \JsonSerializable
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set coordinateX
+     *
+     * @param integer $coordinateX
+     * @return User
+     */
+    public function setCoordinateX($coordinateX)
+    {
+        $this->coordinateX = $coordinateX;
+
+        return $this;
+    }
+
+    /**
+     * Get coordinateX
+     *
+     * @return integer 
+     */
+    public function getCoordinateX()
+    {
+        return $this->coordinateX;
+    }
+
+    /**
+     * Set coordinateY
+     *
+     * @param integer $coordinateY
+     * @return User
+     */
+    public function setCoordinateY($coordinateY)
+    {
+        $this->coordinateY = $coordinateY;
+
+        return $this;
+    }
+
+    /**
+     * Get coordinateY
+     *
+     * @return integer 
+     */
+    public function getCoordinateY()
+    {
+        return $this->coordinateY;
     }
 }

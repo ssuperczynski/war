@@ -43,11 +43,14 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
         for ($i = 1; $i <= self::LIMIT; $i++) {
             /** @var User $user */
             $user = $userManager->createUser();
-            $user->setUsername('user' . $i);
-            $user->setEmail('user' . $i . '@war.com_test');
-            $user->setPlainPassword('test');
-            $user->setEnabled(true);
-            $user->addRole(User::ROLE_USER);
+            $user
+                ->setUsername('user' . $i)
+                ->setEmail('user' . $i . '@war.com_test')
+                ->setPlainPassword('test')
+                ->setEnabled(true)
+                ->addRole(User::ROLE_USER)
+                ->setCoordinateX(rand(1, 99))
+                ->setCoordinateY(rand(1, 99));
 
             $this->addReference('user' . $i, $user);
             $userManager->updateUser($user);
@@ -58,11 +61,12 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
     {
         /** @var User $admin */
         $admin = $userManager->createUser();
-        $admin->setUsername('admin');
-        $admin->setEmail('admin@war.com_test');
-        $admin->setPlainPassword('test');
-        $admin->setEnabled(true);
-        $admin->addRole(User::ROLE_ADMIN);
+        $admin
+            ->setUsername('admin')
+            ->setEmail('admin@war.com_test')
+            ->setPlainPassword('test')
+            ->setEnabled(true)
+            ->addRole(User::ROLE_ADMIN);
 
         $userManager->updateUser($admin);
     }
