@@ -28,8 +28,9 @@ security:
         - { path: ^/admin/,     role: ROLE_ADMIN }
 
         # Views
-        - { path: ^/soldiers$,  role: IS_AUTHENTICATED_FULLY }
-        - { path: ^/vehicles$,  role: IS_AUTHENTICATED_FULLY }
+#        - { path: ^/soldiers$,  role: IS_AUTHENTICATED_FULLY }
+#        - { path: ^/vehicles$,  role: IS_AUTHENTICATED_FULLY }
+#        - { path: ^/map,  role: IS_AUTHENTICATED_FULLY }
         - { path: ^/dashboard,  role: ROLE_ADMIN }
 
         # REST API
