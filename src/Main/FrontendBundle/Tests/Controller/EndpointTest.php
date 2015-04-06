@@ -12,15 +12,18 @@ class EndpointTest extends WebTestCase
 {
 
     /**
-     * @param $url
+     * @param array $routing
      * @dataProvider urlProvider
      */
     public function testFrontend($routing)
     {
-        $client = static::createClient(array(), array(
-            'PHP_AUTH_USER' => 'user1',
-            'PHP_AUTH_PW'   => 'test',
-        ));
+        $client = static::createClient(
+            array(),
+            array(
+                'PHP_AUTH_USER' => 'user1',
+                'PHP_AUTH_PW' => 'test',
+            )
+        );
         $url = $client->getContainer()->get('router')->generate($routing);
         $client->request('GET', $url);
 
@@ -32,12 +35,12 @@ class EndpointTest extends WebTestCase
      */
     public function urlProvider()
     {
-        return array(
-            array('frontend.view.homepage'),
-            array('frontend.view.map'),
-            array('frontend.view.vehicles'),
-            array('frontend.view.soldiers'),
-        );
+        return [
+            ['frontend.view.homepage'],
+            ['frontend.view.map'],
+            ['frontend.view.vehicles'],
+            ['frontend.view.soldiers'],
+        ];
     }
 
     public function testSoldiersAPI()

@@ -10,10 +10,6 @@ frontend.view.vehicles:
     path:     /vehicles
     defaults: { _controller: MainFrontendBundle:Vehicles:show }
 
-frontend.view.map:
-    path:     /map
-    defaults: { _controller: MainFrontendBundle:Map:show }
-
 frontend.API.soldiers:
     path: /soldiers/data
     defaults: { _controller: MainFrontendBundle:Soldiers:data }
@@ -28,3 +24,6 @@ frontend.API.get_points:
     path: /points
     defaults: { _controller: MainFrontendBundle:Points:get }
     methods: [GET]
+
+map:
+    resource: "@MainFrontendBundle/Resources/config/map.yml"

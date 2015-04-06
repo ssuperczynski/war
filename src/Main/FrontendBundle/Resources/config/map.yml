@@ -1,0 +1,7 @@
+frontend.view.map:
+    path:     /map
+    defaults: { _controller: MainFrontendBundle:Map:show }
+
+frontend.API.map.users:
+    path:     /map/users
+    defaults: { _controller: MainFrontendBundle:Map:mapUsers }

@@ -1,6 +1,7 @@
 <?php
 namespace Main\CommonBundle\Tests\Serialization;
 
+use Main\CommonBundle\Entity\Profile;
 use Main\CommonBundle\Entity\User;
 use \Mockery as m;
 use Main\CommonBundle\Entity\Points;
@@ -32,6 +33,16 @@ class SerializationTest extends \PHPUnit_Framework_TestCase
         $user->setUsername('test');
 
         $this->assertArrayHasKey('id', $user->jsonSerialize());
+    }
+
+    /**
+     * @desc Test if User Entity return json
+     */
+    public function testProfileSerialization()
+    {
+        $profile = new Profile();
+
+        $this->assertArrayHasKey('id', $profile->jsonSerialize());
     }
 
 }

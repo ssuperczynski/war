@@ -12,13 +12,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Points implements \JsonSerializable
 {
-    const JSON_ID = 'id';
-    const JSON_USER = 'user';
-    const JSON_SOLDIER = 'soldier';
-    const JSON_FOOD = 'food';
-    const JSON_IRON = 'iron';
-    const JSON_CONCRETE = 'concrete';
-    const JSON_DATE = 'date';
+    const ID = 'id';
+    const USER = 'user';
+    const SOLDIER = 'soldier';
+    const FOOD = 'food';
+    const IRON = 'iron';
+    const CONCRETE = 'concrete';
+    const DATE = 'date';
     /**
      * @var integer
      *
@@ -186,13 +186,13 @@ class Points implements \JsonSerializable
      */
     public function jsonSerialize(){
         return [
-            self::JSON_ID => $this->getId(),
-            self::JSON_USER => $this->getUser()->getId(),
-            self::JSON_SOLDIER => $this->getSoldier(),
-            self::JSON_FOOD => $this->getFood(),
-            self::JSON_IRON => $this->getIron(),
-            self::JSON_CONCRETE => $this->getConcrete(),
-            self::JSON_DATE => $this->getDate()->format('Y-m-d H:i')
+            self::ID => $this->getId(),
+            self::USER => $this->getUser()->getId(),
+            self::SOLDIER => $this->getSoldier(),
+            self::FOOD => $this->getFood(),
+            self::IRON => $this->getIron(),
+            self::CONCRETE => $this->getConcrete(),
+            self::DATE => $this->getDate()->format('Y-m-d H:i')
         ];
     }
 

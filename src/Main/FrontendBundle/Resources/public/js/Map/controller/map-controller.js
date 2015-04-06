@@ -5,17 +5,15 @@
         .module('war.map')
         .controller('MapCtrl', MapCtrl);
 
-    MapCtrl.$inject = ['$scope'];
+    MapCtrl.$inject = ['$scope', 'MapFactory'];
 
-    function MapCtrl($scope) {
-
+    function MapCtrl($scope, MapFactory) {
+        init();
         var width = 960,
-            height = 500;
-
-        var vertices = d3.range(30).map(function (d) {
-            return [Math.random() * width, Math.random() * height];
-        });
-
+            height = 600;
+        var vertices = [];
+        $scope.showPopover = false;
+        $scope.user = '';
         var voronoi = d3.geom.voronoi()
             .clipExtent([[0, 0], [width, height]]);
 
@@ -24,7 +22,15 @@
             .attr("height", height);
 
         var path = svg.append("g").selectAll("path");
-        redraw();
+
+        function init() {
+            MapFactory.getUsers().then(function (response) {
+                vertices = response.data.coordinates.map(function (d) {
+                    return [d.coordinateX * width, d.coordinateY * height];
+                });
+                redraw();
+            });
+        }
 
         function redraw() {
             path = path
@@ -49,14 +55,18 @@
             return "M" + d.join("L") + "Z";
         }
 
-        $scope.showPopover = false;
+
         function mousedown(d) {
-            //console.log('this', this.id);
+            var self = this;
             this.style.fill = 'red';
-            var point = d3.mouse(this),
+            var point = d3.mouse(self),
                 p = {x: point[0], y: point[1]};
-            $scope.showPopover = true;
-            $(".q0, .q1, .q2, .q3").mousedown(function () {
+            $scope.$apply(function () {
+                $scope.user = self.id;
+                $scope.showPopover = true;
+            });
+
+            $(".q0, .q1, .q2, .q3").on('click', function () {
                 $('#popover').css({'top': p.y, 'left': p.x}).fadeIn('fast');
             });
         }
