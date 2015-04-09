@@ -20,11 +20,29 @@ class MapController extends Controller
         return $this->render('MainFrontendBundle:Map:show.html.twig');
     }
 
+    /**
+     * @return JsonResponse
+     */
     public function mapUsersAction()
     {
         $coordinates = $this->getDoctrine()->getRepository('MainCommonBundle:Profile')->getUsersForMap();
-        return new JsonResponse([
-            'coordinates' => $coordinates
-        ]);
+
+        return new JsonResponse(
+            [
+                'coordinates' => $coordinates
+            ]
+        );
+    }
+
+
+    /**
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function userDataAction($id)
+    {
+        $data = $this->getDoctrine()->getRepository('MainCommonBundle:Points')->findOneBy(['user' => $id]);
+
+        return new JsonResponse($data);
     }
 }

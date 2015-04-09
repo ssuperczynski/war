@@ -5,3 +5,9 @@ frontend.view.map:
 frontend.API.map.users:
     path:     /map/users
     defaults: { _controller: MainFrontendBundle:Map:mapUsers }
+    methods: [GET]
+
+frontend.API.map.user.data:
+    path:     /map/user/{id}
+    defaults: { _controller: MainFrontendBundle:Map:userData }
+    methods: [GET]

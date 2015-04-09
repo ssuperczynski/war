@@ -10,7 +10,14 @@
 
                 </maps>
                 <div ng-show="showPopover" id="popover" class="popover">
-                    <h3>user info [[user]]</h3>
+                    <h4>user info: </h4><br/>
+                    <ul>
+                        <li>ilość żołnierzy - [[user.soldier]]</li>
+                        <li>ilość jedzenia - [[user.food]]</li>
+                        <li>ilość metalu - [[user.iron]]</li>
+                        <li>ilość mat. bud - [[user.concrete]]</li>
+                        <li>aktywność - [[user.date]]</li>
+                    </ul>
                 </div>
             </div>
         </div>

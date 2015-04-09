@@ -8,20 +8,19 @@
     MapCtrl.$inject = ['$scope', 'MapFactory'];
 
     function MapCtrl($scope, MapFactory) {
-        init();
+
         var width = 960,
-            height = 600;
-        var vertices = [];
+            height = 600,
+            vertices = [],
+            voronoi = d3.geom.voronoi()
+                .clipExtent([[0, 0], [width, height]]),
+            svg = d3.select("maps").append("svg")
+                .attr("width", width)
+                .attr("height", height),
+            path = svg.append("g").selectAll("path");
+
         $scope.showPopover = false;
         $scope.user = '';
-        var voronoi = d3.geom.voronoi()
-            .clipExtent([[0, 0], [width, height]]);
-
-        var svg = d3.select("maps").append("svg")
-            .attr("width", width)
-            .attr("height", height);
-
-        var path = svg.append("g").selectAll("path");
 
         function init() {
             MapFactory.getUsers().then(function (response) {
@@ -31,6 +30,8 @@
                 redraw();
             });
         }
+
+        init();
 
         function redraw() {
             path = path
@@ -55,19 +56,21 @@
             return "M" + d.join("L") + "Z";
         }
 
-
         function mousedown(d) {
-            var self = this;
-            this.style.fill = 'red';
-            var point = d3.mouse(self),
+            var self = this,
+                userId = parseInt(self.id, 10) + 1,
+                point = d3.mouse(self),
                 p = {x: point[0], y: point[1]};
-            $scope.$apply(function () {
-                $scope.user = self.id;
+            MapFactory.getData(userId).then(function (response) {
+                self.style.fill = 'red';
+                //$scope.$apply(function () {
+                $scope.user = response.data;
                 $scope.showPopover = true;
-            });
+                //});
 
-            $(".q0, .q1, .q2, .q3").on('click', function () {
-                $('#popover').css({'top': p.y, 'left': p.x}).fadeIn('fast');
+                $(".q0, .q1, .q2, .q3").on('click', function () {
+                    $('#popover').css({'top': p.y, 'left': p.x}).fadeIn('fast');
+                });
             });
         }
 

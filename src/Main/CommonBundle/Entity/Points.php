@@ -151,7 +151,7 @@ class Points implements \JsonSerializable
     /**
      * Get food
      *
-     * @return integer 
+     * @return integer
      */
     public function getFood()
     {
@@ -174,7 +174,7 @@ class Points implements \JsonSerializable
     /**
      * Get concrete
      *
-     * @return integer 
+     * @return integer
      */
     public function getConcrete()
     {
@@ -184,7 +184,8 @@ class Points implements \JsonSerializable
     /**
      * @return array
      */
-    public function jsonSerialize(){
+    public function jsonSerialize()
+    {
         return [
             self::ID => $this->getId(),
             self::USER => $this->getUser()->getId(),
@@ -212,7 +213,7 @@ class Points implements \JsonSerializable
     /**
      * Get iron
      *
-     * @return integer 
+     * @return integer
      */
     public function getIron()
     {
@@ -235,7 +236,7 @@ class Points implements \JsonSerializable
     /**
      * Get user
      *
-     * @return \Main\CommonBundle\Entity\User 
+     * @return \Main\CommonBundle\Entity\User
      */
     public function getUser()
     {
