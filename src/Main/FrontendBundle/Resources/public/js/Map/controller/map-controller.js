@@ -11,13 +11,16 @@
 
         var width = 960,
             height = 600,
-            vertices = [],
-            voronoi = d3.geom.voronoi()
-                .clipExtent([[0, 0], [width, height]]),
-            svg = d3.select("maps").append("svg")
+            vertices = [];
+
+        var voronoi = d3.geom.voronoi()
+            .clipExtent([[0, 0], [width, height]]);
+
+        var svg = d3.select("maps").append("svg")
                 .attr("width", width)
-                .attr("height", height),
-            path = svg.append("g").selectAll("path");
+            .attr("height", height);
+
+        var path = svg.append("g").selectAll("path");
 
         $scope.showPopover = false;
         $scope.user = '';
