@@ -19,7 +19,7 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
     /**
      *
      */
-    const LIMIT = 1000;
+    const LIMIT = 500;
     /**
      * @var
      */

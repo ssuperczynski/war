@@ -60,7 +60,7 @@
                 $scope.showPopover = true;
                 //});
 
-                $(".q0, .q1, .q2, .q3").on('click', function () {
+                $(".q0, .q1, .q2, .q3").on('mouseup', function () {
                     $('#popover').css({'top': p.y, 'left': p.x}).fadeIn('fast');
                 });
             });
@@ -89,6 +89,12 @@
             path.order();
             showMyArea();
         }
+
+        $scope.queues = [];
+
+        $scope.spy = function (id) {
+            $scope.queues.push({id: id});
+        };
 
     }
 

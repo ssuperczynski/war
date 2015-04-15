@@ -6,20 +6,12 @@
     <div ng-controller="MapCtrl">
         <div class="row space-20">
             <div class="col-lg-11 col-lg-offset-1">
-                <maps style="position: absolute;">
-
+                <maps>
+                    {{ include('@MainFrontend/Map/_popover.html.twig') }}
                 </maps>
-                <div ng-show="showPopover" id="popover" class="popover">
-                    <h4>user info: </h4><br/>
-                    <ul>
-                        <li>ilość żołnierzy - [[user.soldier]]</li>
-                        <li>ilość jedzenia - [[user.food]]</li>
-                        <li>ilość metalu - [[user.iron]]</li>
-                        <li>ilość mat. bud - [[user.concrete]]</li>
-                        <li>aktywność - [[user.date]]</li>
-                    </ul>
-                </div>
+
             </div>
+            {{ include('@MainFrontend/Map/_queue.html.twig') }}
         </div>
     </div>
 
