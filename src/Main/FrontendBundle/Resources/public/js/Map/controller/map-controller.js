@@ -5,9 +5,9 @@
         .module('war.map')
         .controller('MapCtrl', MapCtrl);
 
-    MapCtrl.$inject = ['$scope', 'MapFactory'];
+    MapCtrl.$inject = ['$scope', 'MapFactory', 'USER'];
 
-    function MapCtrl($scope, MapFactory) {
+    function MapCtrl($scope, MapFactory, USER) {
 
         var width = 960,
             height = 600,
@@ -17,7 +17,7 @@
             .clipExtent([[0, 0], [width, height]]);
 
         var svg = d3.select("maps").append("svg")
-                .attr("width", width)
+            .attr("width", width)
             .attr("height", height);
 
         var path = svg.append("g").selectAll("path");
@@ -36,6 +36,40 @@
 
         init();
 
+        function polygon(d) {
+            return "M" + d.join("L") + "Z";
+        }
+
+        function showMyArea() {
+            $('#' + USER).css("fill", "yellow");
+        }
+
+        function mousedown(d) {
+            var self = this,
+                userId = parseInt(self.id, 10) + 1,
+                point = d3.mouse(self),
+                p = {x: point[0], y: point[1]};
+
+            if (USER === self.id) {
+                return;
+            }
+            MapFactory.getData(userId).then(function (response) {
+                self.style.fill = 'red';
+                //$scope.$apply(function () {
+                $scope.user = response.data;
+                $scope.showPopover = true;
+                //});
+
+                $(".q0, .q1, .q2, .q3").on('click', function () {
+                    $('#popover').css({'top': p.y, 'left': p.x}).fadeIn('fast');
+                });
+            });
+        }
+
+        function mouseover(d) {
+            //
+        }
+
         function redraw() {
             path = path
                 .data(voronoi(vertices), polygon);
@@ -53,34 +87,7 @@
                 .on("mouseover", mouseover);
 
             path.order();
-        }
-
-        function polygon(d) {
-            return "M" + d.join("L") + "Z";
-        }
-
-        function mousedown(d) {
-            var self = this,
-                userId = parseInt(self.id, 10) + 1,
-                point = d3.mouse(self),
-                p = {x: point[0], y: point[1]};
-            MapFactory.getData(userId).then(function (response) {
-                self.style.fill = 'red';
-                //$scope.$apply(function () {
-                $scope.user = response.data;
-                $scope.showPopover = true;
-                //});
-
-                $(".q0, .q1, .q2, .q3").on('click', function () {
-                    $('#popover').css({'top': p.y, 'left': p.x}).fadeIn('fast');
-                });
-            });
-        }
-
-        function mouseover(d) {
-            setTimeout(function () {
-                //console.log('hover', d);
-            }, 500);
+            showMyArea();
         }
 
     }

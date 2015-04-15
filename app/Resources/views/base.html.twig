@@ -113,7 +113,7 @@
     <script>
         angular
                 .module('configuration', [])
-                {#.constant('USER', '{{ app.user.id | default() }}')#}
+                .constant('USER', '{{ app.user.id | default() }}')
                 .constant('BASE_END_POINT', '{{ app.request.getSchemeAndHttpHost() ~ app.request.baseUrl }}');
     </script>
     {% javascripts '@frontend_js' %}

@@ -10,6 +10,10 @@ path {
 .q2 {
   fill: #a4c68f; }
 
+.me {
+    fill: #ffbd0f;
+}
+
 .popover {
   position: relative;
   max-width: 276px;
