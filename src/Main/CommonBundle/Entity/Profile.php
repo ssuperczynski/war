@@ -119,10 +119,10 @@ class Profile implements \JsonSerializable
     /**
      * Set user
      *
-     * @param \Main\CommonBundle\Entity\User $user
+     * @param User $user
      * @return Profile
      */
-    public function setUser(\Main\CommonBundle\Entity\User $user = null)
+    public function setUser(User $user = null)
     {
         $this->user = $user;
 

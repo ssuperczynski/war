@@ -5,6 +5,7 @@ namespace Main\FrontendBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use FOS\UserBundle\Model\UserManager;
 use Main\CommonBundle\Entity\Profile;
 use Main\CommonBundle\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
@@ -19,7 +20,7 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
     /**
      *
      */
-    const LIMIT = 500;
+    const LIMIT = 1000;
     /**
      * @var
      */
@@ -47,7 +48,7 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
     }
 
     /**
-     * @param $userManager
+     * @param UserManager $userManager
      */
     private function loadUsers($userManager)
     {
@@ -85,7 +86,7 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
     }
 
     /**
-     * @param $userManager
+     * @param UserManager $userManager
      */
     private function loadAdmin($userManager)
     {

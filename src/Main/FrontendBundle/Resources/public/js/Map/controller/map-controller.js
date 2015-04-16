@@ -9,8 +9,8 @@
 
     function MapCtrl($scope, MapFactory, USER) {
 
-        var width = 960,
-            height = 600,
+        var width = 3000,
+            height = 2000,
             vertices = [];
 
         var voronoi = d3.geom.voronoi()

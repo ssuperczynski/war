@@ -35,17 +35,18 @@ class ReadNode implements ConsumerInterface
 
     /**
      * @param AMQPMessage $msg
+     * @return mixed
      */
     public function execute(AMQPMessage $msg)
     {
-        $firebase = $this->container->get('kreait_firebase.connection.main');
+//        $firebase = $this->container->get('kreait_firebase.connection.main');
 
         $json = json_decode($msg->body);
         for ($i = 1; $i <= $json->amount; $i++) {
             sleep($json->time / $json->amount);
             $this->redis->hincrby($json->user, $json->range, 1);
-            $currentAmount = $this->redis->hget($json->user, $json->range);
-            $firebase->update([$json->range => $currentAmount], 'data/users/'.$json->user);
+//            $currentAmount = $this->redis->hget($json->user, $json->range);
+//            $firebase->update([$json->range => $currentAmount], 'data/users/'.$json->user);
         }
 
     }

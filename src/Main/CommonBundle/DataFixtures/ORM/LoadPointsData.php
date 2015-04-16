@@ -36,10 +36,10 @@ class LoadPointsData extends AbstractFixture implements FixtureInterface, Ordere
             $points = new Points();
             $points->setDate(new \DateTime());
             $points->setUser($this->getReference('user' . $i));
-            $points->setConcrete(self::gerRandomNumber());
-            $points->setSoldier(self::gerRandomNumber());
-            $points->setFood(self::gerRandomNumber());
-            $points->setIron(self::gerRandomNumber());
+            $points->setConcrete(self::getRandomNumber());
+            $points->setSoldier(self::getRandomNumber());
+            $points->setFood(self::getRandomNumber());
+            $points->setIron(self::getRandomNumber());
 
             $manager->persist($points);
         }
@@ -58,8 +58,8 @@ class LoadPointsData extends AbstractFixture implements FixtureInterface, Ordere
     /**
      * @return int
      */
-    private static function gerRandomNumber()
+    private static function getRandomNumber()
     {
-        return rand(1000, 1000000);
+        return rand(1000, 100000);
     }
 }
