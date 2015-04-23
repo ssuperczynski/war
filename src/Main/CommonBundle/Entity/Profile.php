@@ -43,14 +43,14 @@ class Profile implements \JsonSerializable
     /**
      * @var integer
      *
-     * @ORM\Column(name="coordinateX", type="decimal", precision=13, scale=12)
+     * @ORM\Column(name="coordinateX", type="integer")
      */
     private $coordinateX;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="coordinateY", type="decimal", precision=13, scale=12)
+     * @ORM\Column(name="coordinateY", type="integer")
      */
     private $coordinateY;
 

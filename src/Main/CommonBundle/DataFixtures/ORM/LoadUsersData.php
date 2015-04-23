@@ -20,7 +20,7 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
     /**
      *
      */
-    const LIMIT = 1000;
+    const LIMIT = 999;
     /**
      * @var
      */
@@ -79,8 +79,8 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
             $profile = new Profile();
             $profile->setUser($this->getReference('user'. $i));
 
-            $profile->setCoordinateX(floatVal('0.'.rand(1000000000, 9999999999)));
-            $profile->setCoordinateY(floatVal('0.'.rand(1000000000, 9999999999)));
+            $profile->setCoordinateX(rand(1, 999));
+            $profile->setCoordinateY(rand(1, 999));
             $manager->persist($profile);
         }
     }

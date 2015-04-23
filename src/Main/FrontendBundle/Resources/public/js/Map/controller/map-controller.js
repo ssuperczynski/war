@@ -9,8 +9,8 @@
 
     function MapCtrl($scope, MapFactory, USER) {
 
-        var width = 3000,
-            height = 2000,
+        var width = 999,
+            height = 999,
             vertices = [];
 
         var voronoi = d3.geom.voronoi()
@@ -28,7 +28,7 @@
         function init() {
             MapFactory.getUsers().then(function (response) {
                 vertices = response.data.coordinates.map(function (d) {
-                    return [d.coordinateX * width, d.coordinateY * height];
+                    return [d.coordinateX, d.coordinateY];
                 });
                 redraw();
             });
