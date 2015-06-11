@@ -1,8 +1,8 @@
 services:
-    split_file:
-        class: Main\CommonBundle\Services\SplitFile
+    soldier_queue:
+        class: Main\CommonBundle\Services\SoldierQueue
         arguments:
-            - @old_sound_rabbit_mq.split_file_producer
+            - @old_sound_rabbit_mq.soldier_queue_producer
     process_node:
         class: Main\CommonBundle\Services\ReadNode
         arguments:

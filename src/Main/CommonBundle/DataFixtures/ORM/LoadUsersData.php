@@ -79,8 +79,8 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
             $profile = new Profile();
             $profile->setUser($this->getReference('user'. $i));
 
-            $profile->setCoordinateX(rand(1, 999));
-            $profile->setCoordinateY(rand(1, 999));
+            $profile->setCoordinateX((rand(1, 999)));
+            $profile->setCoordinateY((rand(1, 999)));
             $manager->persist($profile);
         }
     }

@@ -20,11 +20,10 @@ class ReadNode implements ConsumerInterface
      */
     private $redis;
 
-
     /**
      * @param EntityManager $em
-     * @param Client $redis
-     * @param Container $container
+     * @param Client        $redis
+     * @param Container     $container
      */
     function __construct(EntityManager $em, Client $redis, Container $container)
     {
@@ -39,15 +38,11 @@ class ReadNode implements ConsumerInterface
      */
     public function execute(AMQPMessage $msg)
     {
-//        $firebase = $this->container->get('kreait_firebase.connection.main');
-
         $json = json_decode($msg->body);
-        for ($i = 1; $i <= $json->amount; $i++) {
-            sleep($json->time / $json->amount);
-            $this->redis->hincrby($json->user, $json->range, 1);
-//            $currentAmount = $this->redis->hget($json->user, $json->range);
-//            $firebase->update([$json->range => $currentAmount], 'data/users/'.$json->user);
-        }
+        $lua = <<<LUA
+            return redis.call('hmset', 'version', '1', '2', 4, 6)
+LUA;
 
+        $this->redis->eval($lua, 0);
     }
 }

@@ -5,6 +5,7 @@ namespace Main\FrontendBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class SoldiersController
@@ -24,9 +25,9 @@ class SoldiersController extends Controller
     public function addSoldierToQueueAction(Request $request)
     {
         $data = json_decode($request->getContent(), false);
-        $this->get('split_file')->process($this->getUser()->getId(), $data->time, $data->range, $data->amount);
+        $this->get('soldier_queue')->process($this->getUser()->getId(), $data->time, $data->range, $data->amount);
 
-        return new JsonResponse('ok');
+        return new JsonResponse(Response::HTTP_OK);
     }
 
     /**

@@ -2,7 +2,7 @@
 #bin/bash
 
 prog="php app/console rabbitmq:consumer read_node"
-max=30
+max=1
 for i in $(seq $max); do
     if [ $i -lt $max ]; then
         exec $prog &> /dev/null &
