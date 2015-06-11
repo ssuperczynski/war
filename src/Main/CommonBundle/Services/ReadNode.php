@@ -39,10 +39,11 @@ class ReadNode implements ConsumerInterface
     public function execute(AMQPMessage $msg)
     {
         $json = json_decode($msg->body);
+        $key = 'user:' . $json->user . ':' . $json->range;
         $lua = <<<LUA
-            return redis.call('hmset', 'version', '1', '2', 4, 6)
+            return redis.call('hmset', KEYS[1], 'amount', ARGV[1], 'time', ARGV[2])
 LUA;
 
-        $this->redis->eval($lua, 0);
+        $this->redis->eval($lua, 1, $key, 1, (new \DateTime())->format('Y-m-d H:i:s'));
     }
 }
