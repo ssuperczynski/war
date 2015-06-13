@@ -54,7 +54,7 @@ class ReadNode implements ConsumerInterface
     public function execute(AMQPMessage $msg)
     {
         $json = json_decode($msg->body);
-        $key = 'user:' . $json->user . ':' . $json->range;
+        $key = $json->user . ':soldier:queue:' . $json->range;
         $lua = <<<LUA
 local incr_by = redis.call("HINCRBY", KEYS[1], 'amount', ARGV[1])
 local time_exists = redis.call("HEXISTS", KEYS[1], 'time')
