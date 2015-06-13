@@ -45,7 +45,7 @@ class SoldierData
             'Warrant_Officer'
         ];
         foreach ($soldiers as $soldier) {
-            $points[$soldier]['soldiers'] = (int) $this->redis->hget($user, $soldier);
+            $points[$soldier]['soldiers'] = (int) $this->redis->hget("user_".$user.":soldier:amount", $soldier);
         }
 
         return $points;

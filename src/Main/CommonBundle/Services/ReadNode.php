@@ -34,20 +34,15 @@ class ReadNode implements ConsumerInterface
 
     /**
      *
-    core of the couter
-    1. from frontentd (angular) you can click many times button which adding soldiers to queue
-    2. it adds to queue (this script)
-    3. symfony2 command works all the time with 1 sec interval
-    4. when you adding something to this queue save:
-    - added time (if key exists leave old time, if not add new one)
-    - incremented amount
-    - what (range)
-    - user (as a key)
-    5. symfony2 command every second checks queues KEYS and calculate now time minus added time
-    6. if (diff % soldier_interval) == 0, add soldier to trained queue
-    6a. else wait second
-    7. consumer when runs increment solderis queue, decr this queue
-    8. consumer iterate each second through all hashkeys
+     * core of the couter
+     * 1. from frontentd (angular) you can click many times button to add soldiers
+     * 2. clicks are saved in redis
+     * 3. clicks are incremented
+     * 4. if click exists do not add click datetime
+     * 5. if clicks don't exists add first click datetime
+     * 6. scala worker check every second if clicks exists
+     * 7. and decrement queue every *given interval* time
+     * 8. and increment given soldier amount
      * @param AMQPMessage $msg
      * @return mixed
      */

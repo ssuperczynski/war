@@ -70,7 +70,7 @@
         }
 
         function init() {
-            return $http.get(BASE_END_POINT + '/soldiers/data')
+            return $http.get(BASE_END_POINT + '/soldiers/data', {cache: true})
                 .then(function (response) {
                     angular.forEach(response.data, function (v, k) {
                         soldiers[k].soldiers = v.soldiers;
