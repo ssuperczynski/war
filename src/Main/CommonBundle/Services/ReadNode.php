@@ -54,17 +54,19 @@ class ReadNode implements ConsumerInterface
     public function execute(AMQPMessage $msg)
     {
         $json = json_decode($msg->body);
-        $key = $json->user . ':soldier:queue:' . $json->range;
+        $key_amount = 'user_' . $json->user . ':soldier:queue_amount';
+        $key_time   = 'user_' . $json->user . ':soldier:queue_time';
         $lua = <<<LUA
-local incr_by = redis.call("HINCRBY", KEYS[1], 'amount', ARGV[1])
-local time_exists = redis.call("HEXISTS", KEYS[1], 'time')
+local incr_by = redis.call("HINCRBY", KEYS[1],  ARGV[3], ARGV[1])
+local time_exists = redis.call("HEXISTS", KEYS[2], ARGV[3])
 if time_exists == 1 then
-    return redis.call('HMSET', KEYS[1], 'amount', incr_by)
+    return redis.call('HMSET', KEYS[1], ARGV[3], incr_by)
 else
-    return redis.call('HMSET', KEYS[1], 'amount', incr_by, 'time', ARGV[2])
+    redis.call('HMSET', KEYS[1], ARGV[3], incr_by)
+    return redis.call('HMSET', KEYS[2], ARGV[3], ARGV[2])
 end
 LUA;
 
-        $this->redis->eval($lua, 1, $key, $json->amount, (new \DateTime())->format('Y-m-d H:i:s'));
+        $this->redis->eval($lua, 2, $key_amount, $key_time, $json->amount, (new \DateTime())->format('Y-m-d H:i:s'), $json->range);
     }
 }
