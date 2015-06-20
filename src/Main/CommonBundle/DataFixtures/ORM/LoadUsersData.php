@@ -56,10 +56,9 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
      */
     private function loadUsers($userManager)
     {
-        $this->redis->flushdb();
+        $this->addToRedis(self::LIMIT);
         for ($i = 1; $i <= self::LIMIT; $i++) {
             $this->addToPostgres($userManager, $i);
-            $this->addToRedis($i);
         }
     }
 
@@ -74,8 +73,8 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
             $profile = new Profile();
             $profile->setUser($this->getReference('user'. $i));
 
-            $profile->setCoordinateX((rand(1, 999)));
-            $profile->setCoordinateY((rand(1, 999)));
+            $profile->setCoordinateX(rand(1, 999));
+            $profile->setCoordinateY(rand(1, 999));
             $manager->persist($profile);
         }
     }
@@ -125,23 +124,25 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
     }
 
     /**
-     * @param $i
+     * @param $limit
      */
-    private function addToRedis($i)
+    private function addToRedis($limit)
     {
-        $key_amount = "user_" . $i . ":soldier:amount";
-        $key_interval = "user_" . $i . ":soldier:interval";
         $lua = <<<LUA
-redis.call('HMSET', KEYS[1], 'Sergeant', 10)
-redis.call('HMSET', KEYS[1], 'Warrant_Officer', 10)
-redis.call('HMSET', KEYS[1], 'Private', 10)
-redis.call('HMSET', KEYS[1], 'Corporal', 10)
-redis.call('HMSET', KEYS[2], 'Sergeant', 10)
-redis.call('HMSET', KEYS[2], 'Warrant_Officer', 10)
-redis.call('HMSET', KEYS[2], 'Private', 10)
-redis.call('HMSET', KEYS[2], 'Corporal', 10)
+local i = tonumber(ARGV[1])
+redis.call('FLUSHDB')
+local ranges = { "Sergeant", "Warrant_Officer", "Private", "Corporal" }
+while i > 0 do
+    for ranges = 1, 4 do
+        redis.call('HMSET' ,"user_" .. i .. ":soldier:amount", ranges, 10)
+        redis.call('HMSET', "user_" .. i .. ":soldier:interval", ranges, 10)
+        redis.call('HMSET', "user_" .. i .. ":soldier:queue_amount", ranges, 10)
+        redis.call('HMSET', "user_" .. i .. ":soldier:queue_time", ranges, ARGV[2])
+    end
+    i = i - 1
+end
 LUA;
 
-        $this->redis->eval($lua, 2, $key_amount, $key_interval);
+        $this->redis->eval($lua, 0, $limit, (new \DateTime())->format('Y-m-d H:i:s'));
     }
 }
