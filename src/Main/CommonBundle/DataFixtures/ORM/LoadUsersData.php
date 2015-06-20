@@ -10,6 +10,7 @@ use Main\CommonBundle\Entity\Profile;
 use Main\CommonBundle\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Predis\Client;
 
 /**
  * Class LoadUsersData
@@ -26,12 +27,15 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
      */
     private $container;
 
+    private $redis;
+
     /**
      * @param ContainerInterface $container
      */
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
+        $this->redis =  new Client();
     }
 
     /**
@@ -52,19 +56,10 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
      */
     private function loadUsers($userManager)
     {
-
+        $this->redis->flushdb();
         for ($i = 1; $i <= self::LIMIT; $i++) {
-            /** @var User $user */
-            $user = $userManager->createUser();
-            $user
-                ->setUsername('user' . $i)
-                ->setEmail('user' . $i . '@war.com_test')
-                ->setPlainPassword('test')
-                ->setEnabled(true)
-                ->addRole(User::ROLE_USER);
-
-            $this->addReference('user' . $i, $user);
-            $userManager->updateUser($user);
+            $this->addToPostgres($userManager, $i);
+            $this->addToRedis($i);
         }
     }
 
@@ -108,5 +103,45 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
     public function getOrder()
     {
         return 100;
+    }
+
+    /**
+     * @param $userManager
+     * @param $i
+     */
+    private function addToPostgres($userManager, $i)
+    {
+        /** @var User $user */
+        $user = $userManager->createUser();
+        $user
+            ->setUsername('user' . $i)
+            ->setEmail('user' . $i . '@war.com_test')
+            ->setPlainPassword('test')
+            ->setEnabled(true)
+            ->addRole(User::ROLE_USER);
+
+        $this->addReference('user' . $i, $user);
+        $userManager->updateUser($user);
+    }
+
+    /**
+     * @param $i
+     */
+    private function addToRedis($i)
+    {
+        $key_amount = "user_" . $i . ":soldier:amount";
+        $key_interval = "user_" . $i . ":soldier:interval";
+        $lua = <<<LUA
+redis.call('HMSET', KEYS[1], 'Sergeant', 10)
+redis.call('HMSET', KEYS[1], 'Warrant_Officer', 10)
+redis.call('HMSET', KEYS[1], 'Private', 10)
+redis.call('HMSET', KEYS[1], 'Corporal', 10)
+redis.call('HMSET', KEYS[2], 'Sergeant', 10)
+redis.call('HMSET', KEYS[2], 'Warrant_Officer', 10)
+redis.call('HMSET', KEYS[2], 'Private', 10)
+redis.call('HMSET', KEYS[2], 'Corporal', 10)
+LUA;
+
+        $this->redis->eval($lua, 2, $key_amount, $key_interval);
     }
 }
