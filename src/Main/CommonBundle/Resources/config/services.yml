@@ -3,8 +3,18 @@ services:
         class: Main\CommonBundle\Services\SoldierQueue
         arguments:
             - @old_sound_rabbit_mq.soldier_queue_producer
-    process_node:
-        class: Main\CommonBundle\Services\ReadNode
+    building_queue:
+        class: Main\CommonBundle\Services\SoldierQueue
+        arguments:
+            - @old_sound_rabbit_mq.soldier_queue_producer
+    save_soldiers:
+        class: Main\CommonBundle\Services\SaveSoldiers
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @snc_redis.default
+            - @service_container
+    save_building:
+        class: Main\CommonBundle\Services\SaveSoldiers
         arguments:
             - @doctrine.orm.entity_manager
             - @snc_redis.default

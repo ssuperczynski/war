@@ -78,8 +78,8 @@ old_sound_rabbit_mq:
         default:
             host:     '127.0.0.1'
             port:     5672
-            user:     'test'
-            password: 'test'
+            user:     'admin'
+            password: 'password'
             vhost:    '/'
             lazy:     false
 #            connection_timeout: 3
@@ -93,14 +93,23 @@ old_sound_rabbit_mq:
     producers:
         soldier_queue:
             connection:       default
-            queue_options: { name: 'file_nodes', durable: true }
-            exchange_options: { name: 'file_nodes', type: direct }
-    consumers:
-        read_node:
+            queue_options: { name: 'soldiers', durable: true }
+            exchange_options: { name: 'soldiers', type: direct }
+        building_queue:
             connection:       default
-            exchange_options: {name: 'file_nodes', type: direct}
-            queue_options:    {name: 'file_nodes'}
-            callback:         process_node
+            queue_options: { name: 'building', durable: true }
+            exchange_options: { name: 'building', type: direct }
+    consumers:
+        save_soldiers:
+            connection:       default
+            exchange_options: { name: 'soldiers', type: direct }
+            queue_options:    { name: 'soldiers' }
+            callback:         save_soldiers
+        save_building:
+            connection:       default
+            exchange_options: { name: 'building', type: direct }
+            queue_options:    { name: 'building' }
+            callback:         save_building
 
 snc_redis:
     clients:

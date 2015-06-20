@@ -10,10 +10,10 @@ use Symfony\Component\DependencyInjection\Container;
 
 
 /**
- * Class ReadNode
+ * Class SaveSoldiers
  * @package Main\CommonBundle\Services
  */
-class ReadNode implements ConsumerInterface
+class SaveSoldiers implements ConsumerInterface
 {
     /**
      * @var Client $redis
@@ -34,8 +34,8 @@ class ReadNode implements ConsumerInterface
 
     /**
      *
-     * core of the couter
-     * 1. from frontentd (angular) you can click many times button to add soldiers
+     * core of the counter
+     * 1. from frontend (angular) you can click many times button to add soldiers
      * 2. clicks are saved in redis
      * 3. clicks are incremented
      * 4. if click exists do not add click datetime

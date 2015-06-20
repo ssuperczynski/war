@@ -12,6 +12,12 @@
         'timer'
     ]);
 
+    angular.module('war.buildings', [
+        'war',
+        'ui.bootstrap',
+        'timer'
+    ]);
+
     angular.module('war.map', [
         'war',
         'ui.bootstrap'
@@ -25,6 +31,7 @@
 
         'war.dashboard',
         'war.soldiers',
+        'war.buildings',
         'war.map'
     ]);
 

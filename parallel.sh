@@ -1,7 +1,7 @@
 #!/bin/sh
 #bin/bash
 
-prog="php app/console rabbitmq:consumer read_node"
+prog="php app/console rabbitmq:consumer save_soldiers"
 max=1
 for i in $(seq $max); do
     if [ $i -lt $max ]; then
