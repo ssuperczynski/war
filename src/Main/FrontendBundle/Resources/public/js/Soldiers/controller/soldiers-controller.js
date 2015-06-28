@@ -5,15 +5,15 @@
         .module('war.soldiers')
         .controller('SoldiersCtrl', SoldiersCtrl);
 
-    SoldiersCtrl.$inject = ['$scope', '$aside', 'SoldiersFactory', 'SoldiersService'];
+    SoldiersCtrl.$inject = ['$scope', '$aside', 'SoldiersFactory', 'USER'];
 
-    function SoldiersCtrl($scope, $aside, SoldiersFactory, SoldiersService) {
+    function SoldiersCtrl($scope, $aside, SoldiersFactory, USER) {
 
         var socketRedis = new SocketRedis('http://127.0.0.1:8090');
         socketRedis.onopen = function () {
             console.log('open');
-            socketRedis.subscribe('soldier', null, 'bar', function (event, data) {
-                console.log('New event `' + event + '` on channel `channel-name`:', data);
+            socketRedis.subscribe('user_' + USER, null, 'bar', function (event, data) {
+                console.log('Event "' + event + '" on channel: "soldier", data: ', data);
             });
         };
         $scope.openAside = function (position) {
