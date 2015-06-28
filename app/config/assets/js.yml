@@ -35,6 +35,12 @@ assetic:
         d3_js:
             inputs:
                 - '%kernel.root_dir%/../bower_components/d3/d3.js'
+        sockjs_js:
+            inputs:
+                - '%kernel.root_dir%/../bower_components/sockjs/sockjs.js'
+        socket_redis_js:
+            inputs:
+               - '@MainFrontendBundle/Resources/public/lib/socket-redis.js'
         frontend_js:
             inputs:
                - '@MainFrontendBundle/Resources/public/js/*'

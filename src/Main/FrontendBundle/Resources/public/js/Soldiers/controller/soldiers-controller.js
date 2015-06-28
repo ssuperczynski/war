@@ -9,7 +9,13 @@
 
     function SoldiersCtrl($scope, $aside, SoldiersFactory, SoldiersService) {
 
-
+        var socketRedis = new SocketRedis('http://127.0.0.1:8090');
+        socketRedis.onopen = function () {
+            console.log('open');
+            socketRedis.subscribe('soldier', null, 'bar', function (event, data) {
+                console.log('New event `' + event + '` on channel `channel-name`:', data);
+            });
+        };
         $scope.openAside = function (position) {
             $aside.open({
                 templateUrl: 'partials/Soldiers/serial.html',
