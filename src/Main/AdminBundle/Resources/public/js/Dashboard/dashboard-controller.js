@@ -5,14 +5,9 @@
         .module('war.admin-dashboard')
         .controller('DashboardCtrl', DashboardCtrl);
 
-    DashboardCtrl.$inject = ['$scope', '$firebase', '$timeout'];
+    DashboardCtrl.$inject = ['$scope', '$timeout'];
 
-    function DashboardCtrl($scope, $firebase, $timeout) {
-        var ref = new Firebase("https://amber-heat-9116.firebaseio.com/");
-        // create an AngularFire reference to the data
-        var sync = $firebase(ref);
-        // download the data into a local object
-        $scope.data = sync.$asObject();
+    function DashboardCtrl($scope, $timeout) {
         $scope.style = {};
 
         $scope.getArray = function () {

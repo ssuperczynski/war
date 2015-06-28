@@ -27,7 +27,6 @@
         'configuration',
         'ui.bootstrap',
         'ngAside',
-        'firebase',
 
         'war.dashboard',
         'war.soldiers',

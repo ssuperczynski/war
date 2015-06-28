@@ -22,10 +22,6 @@ assetic:
         angular_timer_js:
             inputs:
                 - '%kernel.root_dir%/../bower_components/angular-timer/dist/angular-timer.js'
-        firebase_js:
-            inputs:
-                - '%kernel.root_dir%/../bower_components/firebase/firebase.js'
-                - '%kernel.root_dir%/../bower_components/angularfire/dist/angularfire.js'
         ngcsv_js:
             inputs:
                 - '%kernel.root_dir%/../bower_components/ng-csv/build/ng-csv.min.js'

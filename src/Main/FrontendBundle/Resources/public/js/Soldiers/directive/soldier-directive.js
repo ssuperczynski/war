@@ -10,7 +10,7 @@
         .module('war.soldiers')
         .directive('soldier', soldier);
 
-    soldier.$inject = ['SoldiersFactory', '$firebase'];
+    soldier.$inject = ['SoldiersFactory'];
 
     function soldier() {
         return {
@@ -18,12 +18,7 @@
             scope: {
                 range: '='
             },
-            controller: function ($scope, SoldiersFactory, $firebase) {
-                //var ref = new Firebase("https://amber-heat-9116.firebaseio.com/");
-                // create an AngularFire reference to the data
-                //var sync = $firebase(ref);
-                // download the data into a local object
-                //$scope.data = sync.$asObject();
+            controller: function ($scope, SoldiersFactory) {
                 init();
 
                 function init() {
