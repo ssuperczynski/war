@@ -52,18 +52,9 @@
             }
         };
 
-
         function setTimeSummary(range, incr) {
             soldiers[range]['timeSummary'] = soldiers[range]['timeSummary'] + incr;
         }
-
-        //function getSoldiers () {
-        //    return Private.soldiers;
-        //}
-        //
-        //function setSoldiers (incr) {
-        //    Private.soldiers = Private.soldiers + incr;
-        //}
 
         function addToQueue(params) {
             return $http.post(BASE_END_POINT + '/soldiers/queue', params);

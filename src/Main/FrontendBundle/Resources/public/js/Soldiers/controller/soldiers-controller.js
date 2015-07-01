@@ -5,17 +5,10 @@
         .module('war.soldiers')
         .controller('SoldiersCtrl', SoldiersCtrl);
 
-    SoldiersCtrl.$inject = ['$scope', '$aside', 'SoldiersFactory', 'USER'];
+    SoldiersCtrl.$inject = ['$scope', '$aside', 'SoldiersService'];
 
-    function SoldiersCtrl($scope, $aside, SoldiersFactory, USER) {
+    function SoldiersCtrl($scope, $aside, SoldiersService) {
 
-        var socketRedis = new SocketRedis('http://127.0.0.1:8090');
-        socketRedis.onopen = function () {
-            console.log('open');
-            socketRedis.subscribe('user_' + USER, null, 'bar', function (event, data) {
-                console.log('Event "' + event + '" on channel: "soldier", data: ', data);
-            });
-        };
         $scope.openAside = function (position) {
             $aside.open({
                 templateUrl: 'partials/Soldiers/serial.html',
@@ -32,7 +25,7 @@
                         e.stopPropagation();
                     };
                 }
-            })
+            });
         };
 
     }
