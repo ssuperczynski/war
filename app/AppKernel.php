@@ -22,7 +22,6 @@ class AppKernel extends Kernel
             new Main\CommonBundle\MainCommonBundle(),
             new OldSound\RabbitMqBundle\OldSoundRabbitMqBundle(),
             new Snc\RedisBundle\SncRedisBundle(),
-            new Kreait\FirebaseBundle\KreaitFirebaseBundle(),
             new Main\AdminBundle\MainAdminBundle(),
         );
 

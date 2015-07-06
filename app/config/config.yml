@@ -119,8 +119,3 @@ snc_redis:
             dsn: redis://localhost
             options:
                 profile: 2.6
-
-kreait_firebase:
-  connections:
-    main:
-      host: amber-heat-9116.firebaseio.com
