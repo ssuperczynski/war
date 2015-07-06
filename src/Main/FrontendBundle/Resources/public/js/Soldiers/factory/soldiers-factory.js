@@ -16,6 +16,7 @@
                 amount: 0,
                 soldiers: 0,
                 timeSummary: 1,
+                interval: 0,
                 food: '0.3/h',
                 queue: 0,
                 imgPath: 'bundles/mainfrontend/images/private.png'
@@ -26,6 +27,7 @@
                 amount: 0,
                 soldiers: 0,
                 timeSummary: 1,
+                interval: 0,
                 food: '0.4/h',
                 queue: 0,
                 imgPath: 'bundles/mainfrontend/images/corporal.png'
@@ -36,6 +38,7 @@
                 amount: 0,
                 soldiers: 0,
                 timeSummary: 1,
+                interval: 0,
                 food: '0.3/h',
                 queue: 0,
                 imgPath: 'bundles/mainfrontend/images/sergeant.png'
@@ -46,6 +49,7 @@
                 amount: 0,
                 soldiers: 0,
                 timeSummary: 1,
+                interval: 0,
                 food: '0.3/h',
                 queue: 0,
                 imgPath: 'bundles/mainfrontend/images/warrant-officer.png'
@@ -64,8 +68,11 @@
         function init() {
             return $http.get(BASE_END_POINT + '/soldiers/data', {cache: true})
                 .then(function (response) {
-                    angular.forEach(response.data, function (v, k) {
-                        soldiers[k].soldiers = v.soldiers;
+                    angular.forEach(response.data.amount, function (v, k) {
+                        soldiers[k].soldiers = v;
+                    });
+                    angular.forEach(response.data.interval, function (v, k) {
+                        soldiers[k].interval = v;
                     });
                 });
         }

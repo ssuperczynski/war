@@ -37,17 +37,9 @@ class SoldierData
      */
     public function getAmount($user)
     {
-        $points = [];
-        $soldiers = [
-            'Private',
-            'Corporal',
-            'Sergeant',
-            'Warrant_Officer'
+        return [
+            'amount' => $this->redis->hgetall("user_" . $user . ":soldier:amount"),
+            'interval' => $this->redis->hgetall("user_" . $user . ":soldier:interval")
         ];
-        foreach ($soldiers as $soldier) {
-            $points[$soldier]['soldiers'] = (int) $this->redis->hget("user_".$user.":soldier:amount", $soldier);
-        }
-
-        return $points;
     }
 }
