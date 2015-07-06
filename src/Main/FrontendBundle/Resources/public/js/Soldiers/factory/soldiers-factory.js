@@ -17,7 +17,7 @@
                 soldiers: 0,
                 timeSummary: 1,
                 food: '0.3/h',
-                queue: [],
+                queue: 0,
                 imgPath: 'bundles/mainfrontend/images/private.png'
             },
             Corporal: {
@@ -27,7 +27,7 @@
                 soldiers: 0,
                 timeSummary: 1,
                 food: '0.4/h',
-                queue: [],
+                queue: 0,
                 imgPath: 'bundles/mainfrontend/images/corporal.png'
             },
             Sergeant: {
@@ -37,7 +37,7 @@
                 soldiers: 0,
                 timeSummary: 1,
                 food: '0.3/h',
-                queue: [],
+                queue: 0,
                 imgPath: 'bundles/mainfrontend/images/sergeant.png'
             },
             Warrant_Officer: {
@@ -47,7 +47,7 @@
                 soldiers: 0,
                 timeSummary: 1,
                 food: '0.3/h',
-                queue: [],
+                queue: 0,
                 imgPath: 'bundles/mainfrontend/images/warrant-officer.png'
             }
         };
@@ -57,6 +57,7 @@
         }
 
         function addToQueue(params) {
+            soldiers[params.range].queue += params.amount;
             return $http.post(BASE_END_POINT + '/soldiers/queue', params);
         }
 
