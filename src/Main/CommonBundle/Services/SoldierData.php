@@ -39,7 +39,10 @@ class SoldierData
     {
         return [
             'amount' => $this->redis->hgetall("user_" . $user . ":soldier:amount"),
-            'interval' => $this->redis->hgetall("user_" . $user . ":soldier:interval")
+            'interval' => $this->redis->hgetall("user_" . $user . ":soldier:interval"),
+            'speed' => $this->redis->hgetall("user_" . $user . ":soldier:speed"),
+            'protection' => $this->redis->hgetall("user_" . $user . ":soldier:protection"),
+            'power' => $this->redis->hgetall("user_" . $user . ":soldier:power")
         ];
     }
 }

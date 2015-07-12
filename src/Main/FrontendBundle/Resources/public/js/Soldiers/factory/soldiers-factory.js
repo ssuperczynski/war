@@ -17,6 +17,9 @@
                 soldiers: 0,
                 timeSummary: 1,
                 interval: 0,
+                speed: 0,
+                protection: 0,
+                power: 0,
                 food: '0.3/h',
                 queue: 0,
                 imgPath: 'bundles/mainfrontend/images/private.png'
@@ -28,6 +31,9 @@
                 soldiers: 0,
                 timeSummary: 1,
                 interval: 0,
+                speed: 0,
+                protection: 0,
+                power: 0,
                 food: '0.4/h',
                 queue: 0,
                 imgPath: 'bundles/mainfrontend/images/corporal.png'
@@ -39,6 +45,9 @@
                 soldiers: 0,
                 timeSummary: 1,
                 interval: 0,
+                speed: 0,
+                protection: 0,
+                power: 0,
                 food: '0.3/h',
                 queue: 0,
                 imgPath: 'bundles/mainfrontend/images/sergeant.png'
@@ -50,6 +59,9 @@
                 soldiers: 0,
                 timeSummary: 1,
                 interval: 0,
+                speed: 0,
+                protection: 0,
+                power: 0,
                 food: '0.3/h',
                 queue: 0,
                 imgPath: 'bundles/mainfrontend/images/warrant-officer.png'
@@ -57,7 +69,7 @@
         };
 
         function setTimeSummary(range, incr) {
-            soldiers[range]['timeSummary'] = soldiers[range]['timeSummary'] + incr;
+            soldiers[range].timeSummary += incr;
         }
 
         function addToQueue(params) {
@@ -73,6 +85,15 @@
                     });
                     angular.forEach(response.data.interval, function (v, k) {
                         soldiers[k].interval = v;
+                    });
+                    angular.forEach(response.data.speed, function (v, k) {
+                        soldiers[k].speed = v;
+                    });
+                    angular.forEach(response.data.protection, function (v, k) {
+                        soldiers[k].protection = v;
+                    });
+                    angular.forEach(response.data.power, function (v, k) {
+                        soldiers[k].power = v;
                     });
                 });
         }
@@ -90,4 +111,4 @@
 
     }
 
-})();
+}());

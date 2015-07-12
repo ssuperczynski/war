@@ -5,6 +5,9 @@
 * 3. Run rabbitMQ: http://localhost:15672/#/
 * 4. Run redis-cli and then MONITOR
 * 5. Run scala worker `java jar worker.jar`
+* 6. Run php app/console server:run
+* 7. Run php app/console rabbitmq:consumer save_soldiers
+* 8. socket-redis
 
 
 # Core logic #

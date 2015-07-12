@@ -21,7 +21,7 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
     /**
      *
      */
-    const LIMIT = 299;
+    const LIMIT = 99;
     /**
      * @var
      */
@@ -136,6 +136,9 @@ while i > 0 do
     for k, v in pairs(ranges) do
         redis.call('HMSET' ,"user_" .. i .. ":soldier:amount", v, 10)
         redis.call('HMSET', "user_" .. i .. ":soldier:interval", v, 10)
+        redis.call('HMSET', "user_" .. i .. ":soldier:speed", v, 1)
+        redis.call('HMSET', "user_" .. i .. ":soldier:protection", v, 1)
+        redis.call('HMSET', "user_" .. i .. ":soldier:power", v, 1)
         redis.call('HMSET', "user_" .. i .. ":soldier:queue_amount", v, 10)
         redis.call('HMSET', "user_" .. i .. ":soldier:queue_time", v, ARGV[2])
     end
