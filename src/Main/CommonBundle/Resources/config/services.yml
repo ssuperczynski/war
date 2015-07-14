@@ -25,3 +25,9 @@ services:
             - @doctrine.orm.entity_manager
             - @snc_redis.default
             - @service_container
+    spy_service:
+        class: Main\CommonBundle\Services\SpyService
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @snc_redis.default
+            - @service_container

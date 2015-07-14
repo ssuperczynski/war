@@ -4,6 +4,8 @@ namespace Main\FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class PointsController
@@ -34,7 +36,6 @@ class MapController extends Controller
         );
     }
 
-
     /**
      * @param int $id
      * @return JsonResponse
@@ -44,5 +45,17 @@ class MapController extends Controller
         $data = $this->getDoctrine()->getRepository('MainCommonBundle:Points')->findOneBy(['user' => $id]);
 
         return new JsonResponse($data);
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function spyUserAction(Request $request)
+    {
+        $data = json_decode($request->getContent());
+        $this->get('spy_service')->startSpy($this->getUser()->getId(), $data->id, $data->distance);
+
+        return new JsonResponse(Response::HTTP_OK);
     }
 }

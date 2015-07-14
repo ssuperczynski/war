@@ -93,9 +93,11 @@
         $scope.queues = [];
 
         $scope.spy = function (id) {
-            $scope.queues.push({id: id});
+            MapFactory.sendSpy(id).then(function () {
+                $scope.queues.push({id: id});
+            });
         };
 
     }
 
-})();
+}());

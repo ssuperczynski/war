@@ -9,18 +9,21 @@
 
     function MapFactory($http, BASE_END_POINT) {
 
-        function getUsers() {
+        var self = this;
+
+        self.getUsers = function () {
             return $http.get(BASE_END_POINT + '/map/users');
-        }
-
-        function getData(id) {
-            return $http.get(BASE_END_POINT + '/map/user/' + id, {cache: true});
-        }
-
-        return {
-            getUsers: getUsers,
-            getData: getData
         };
+
+        self.getData = function (id) {
+            return $http.get(BASE_END_POINT + '/map/user/' + id, {cache: true});
+        };
+
+        self.sendSpy = function (id) {
+            return $http.post(BASE_END_POINT + '/map/spy', {id: id, distance: 20});
+        };
+
+        return self;
     }
 
-})();
+}());

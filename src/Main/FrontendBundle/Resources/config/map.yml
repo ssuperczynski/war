@@ -11,3 +11,8 @@ frontend.API.map.user.data:
     path:     /map/user/{id}
     defaults: { _controller: MainFrontendBundle:Map:userData }
     methods: [GET]
+
+frontend.API.map.spy:
+    path:     /map/spy
+    defaults: { _controller: MainFrontendBundle:Map:spyUser }
+    methods: [POST]

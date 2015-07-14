@@ -22,10 +22,10 @@
 
 </head>
 
-<body role="document">
+<body role="document" ng-app="war">
 
 <!-- Fixed navbar -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavbarCtrl">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -44,6 +44,9 @@
                     <li><a href="{{ path('frontend.view.vehicles') }}">Vehicles</a></li>
                     <li><a href="{{ path('frontend.view.buildings') }}">Buildings</a></li>
                     <li><a href="{{ path('frontend.view.map') }}">Map</a></li>
+                    <li>
+                        <a href=""><span class="label" ng-class="messages > 0 ? 'label-danger' : 'label-default' "><b>[[ messages ]]</b></span></a>
+                    </li>
                 </ul>
             {% endif %}
             <ul class="nav navbar-nav navbar-right navbar-user">
@@ -69,7 +72,7 @@
     </div>
 </nav>
 
-<div ng-app="war.dashboard" class="container theme-showcase" role="main" style="margin-top: 50px">
+<div class="container theme-showcase" role="main" style="margin-top: 50px">
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED")  %}
         <div class="row" ng-controller="CountersCtrl">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

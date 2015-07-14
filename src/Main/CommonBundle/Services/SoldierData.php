@@ -8,7 +8,7 @@ use Symfony\Component\DependencyInjection\Container;
 
 
 /**
- * Class ReadNode
+ * Class SoldierData
  * @package Main\CommonBundle\Services
  */
 class SoldierData

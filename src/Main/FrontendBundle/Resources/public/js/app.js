@@ -23,6 +23,11 @@
         'ui.bootstrap'
     ]);
 
+    angular.module('war.navbar', [
+        'war',
+        'ui.bootstrap'
+    ]);
+
     var app = angular.module('war', [
         'configuration',
         'ui.bootstrap',
@@ -31,12 +36,13 @@
         'war.dashboard',
         'war.soldiers',
         'war.buildings',
-        'war.map'
+        'war.map',
+        'war.navbar'
     ]);
 
-    app.config(['$interpolateProvider', function($interpolateProvider) {
+    app.config(['$interpolateProvider', function ($interpolateProvider) {
         $interpolateProvider.startSymbol('[[');
         $interpolateProvider.endSymbol(']]');
     }]);
 
-})();
+}());
