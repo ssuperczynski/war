@@ -147,5 +147,21 @@ end
 LUA;
 
         $this->redis->eval($lua, 0, $limit, (new \DateTime())->format('Y-m-d H:i:s'));
+
+        $lua2 = <<<LUA
+local i = tonumber(ARGV[1])
+while i > 0 do
+
+    redis.call('HMSET' ,"user_" .. i .. ":counter", "food", ARGV[2])
+    redis.call('HMSET' ,"user_" .. i .. ":counter", "soldier", ARGV[2])
+    redis.call('HMSET' ,"user_" .. i .. ":counter", "iron", ARGV[2])
+    redis.call('HMSET' ,"user_" .. i .. ":counter", "concrete", ARGV[2])
+    redis.call('HMSET', "user_" .. i .. ":counter", "time", ARGV[3])
+
+    i = i - 1
+end
+LUA;
+
+        $this->redis->eval($lua2, 0, LoadUsersData::LIMIT, 1000, (new \DateTime())->format('Y-m-d H:i:s'));
     }
 }

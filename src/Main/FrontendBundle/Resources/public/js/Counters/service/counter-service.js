@@ -87,12 +87,12 @@
 
         function setInitialCounters(res) {
             var now = moment(),
-                last = moment(res.data.date),
+                last = moment(res.data.time),
                 diff = now.diff(last, 's');
-            soldierCounter.amount   = res.data.soldier  + diff * SoldierFactory.levels[soldierCounter.factory.level];
-            concreteCounter.amount  = res.data.concrete + diff * ConcreteFactory.levels[concreteCounter.factory.level];
-            foodCounter.amount      = res.data.food     + diff * FoodFactory.levels[foodCounter.factory.level];
-            ironCounter.amount      = res.data.iron     + diff * IronFactory.levels[ironCounter.factory.level];
+            soldierCounter.amount   = parseInt(res.data.soldier)  + diff * SoldierFactory.levels[soldierCounter.factory.level];
+            concreteCounter.amount  = parseInt(res.data.concrete) + diff * ConcreteFactory.levels[concreteCounter.factory.level];
+            foodCounter.amount      = parseInt(res.data.food)     + diff * FoodFactory.levels[foodCounter.factory.level];
+            ironCounter.amount      = parseInt(res.data.iron)     + diff * IronFactory.levels[ironCounter.factory.level];
         }
 
         function init() {
@@ -119,4 +119,4 @@
 
     }
 
-})();
+}());

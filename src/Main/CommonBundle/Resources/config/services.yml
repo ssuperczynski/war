@@ -31,3 +31,8 @@ services:
             - @doctrine.orm.entity_manager
             - @snc_redis.default
             - @service_container
+    points_service:
+        class: Main\CommonBundle\Services\PointsService
+        arguments:
+            - @snc_redis.default
+            - @service_container

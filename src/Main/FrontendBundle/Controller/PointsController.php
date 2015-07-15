@@ -16,13 +16,7 @@ class PointsController extends Controller
      */
     public function getAction()
     {
-        $points = $this->getDoctrine()->getManager()
-            ->getRepository('MainCommonBundle:Points')
-            ->findOneBy(
-                [
-                    'id' => $this->getUser()->getId()
-                ]
-            );
+        $points = $this->get('points_service')->getAmount($this->getUser()->getId());
 
         return new JsonResponse($points);
     }
