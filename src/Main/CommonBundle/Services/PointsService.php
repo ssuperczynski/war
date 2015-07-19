@@ -35,6 +35,9 @@ class PointsService
      */
     public function getAmount($user)
     {
-        return $this->redis->hgetall("user_" . $user . ":counter");
+        return [
+            'points' => $this->redis->hgetall("user_" . $user . ":counter"),
+            'messages' => $this->redis->lrange("user_" . $user . ":messages", 0, 100)
+        ];
     }
 }

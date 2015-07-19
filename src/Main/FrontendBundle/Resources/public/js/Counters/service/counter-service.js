@@ -20,6 +20,8 @@
             }
         };
 
+        var messages = [];
+
         function setSoldierCounter() {
             soldierCounter.amount = soldierCounter.amount + 1 * SoldierFactory.levels[soldierCounter.factory.level];
         }
@@ -87,12 +89,17 @@
 
         function setInitialCounters(res) {
             var now = moment(),
-                last = moment(res.data.time),
+                last = moment(res.data.points.time),
                 diff = now.diff(last, 's');
-            soldierCounter.amount   = parseInt(res.data.soldier)  + diff * SoldierFactory.levels[soldierCounter.factory.level];
-            concreteCounter.amount  = parseInt(res.data.concrete) + diff * ConcreteFactory.levels[concreteCounter.factory.level];
-            foodCounter.amount      = parseInt(res.data.food)     + diff * FoodFactory.levels[foodCounter.factory.level];
-            ironCounter.amount      = parseInt(res.data.iron)     + diff * IronFactory.levels[ironCounter.factory.level];
+            soldierCounter.amount   = parseInt(res.data.points.soldier)  + diff * SoldierFactory.levels[soldierCounter.factory.level];
+            concreteCounter.amount  = parseInt(res.data.points.concrete) + diff * ConcreteFactory.levels[concreteCounter.factory.level];
+            foodCounter.amount      = parseInt(res.data.points.food)     + diff * FoodFactory.levels[foodCounter.factory.level];
+            ironCounter.amount      = parseInt(res.data.points.iron)     + diff * IronFactory.levels[ironCounter.factory.level];
+
+            angular.forEach(res.data.messages, function (message) {
+                messages.push((angular.fromJson(message)).data.data);
+            });
+
         }
 
         function init() {
@@ -114,7 +121,8 @@
             getSoldierCounter   : getSoldierCounter,
             getConcreteCounter  : getConcreteCounter,
             getFoodCounter      : getFoodCounter,
-            getIronCounter      : getIronCounter
+            getIronCounter      : getIronCounter,
+            messages            : messages
         };
 
     }

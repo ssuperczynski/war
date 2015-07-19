@@ -53,17 +53,17 @@
             if (USER === self.id) {
                 return;
             }
-            MapFactory.getData(userId).then(function (response) {
-                self.style.fill = 'red';
+            //MapFactory.getData(userId).then(function (response) {
+            self.style.fill = 'red';
                 //$scope.$apply(function () {
-                $scope.user = response.data;
-                $scope.showPopover = true;
+            $scope.user = userId;
+            $scope.showPopover = true;
                 //});
 
-                $(".q0, .q1, .q2, .q3").on('mouseup', function () {
-                    $('#popover').css({'top': p.y, 'left': p.x}).fadeIn('fast');
-                });
+            $(".q0, .q1, .q2, .q3").on('mouseup', function () {
+                $('#popover').css({'top': p.y, 'left': p.x}).fadeIn('fast');
             });
+            //});
         }
 
         function mouseover(d) {

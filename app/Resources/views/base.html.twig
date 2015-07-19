@@ -44,9 +44,18 @@
                     <li><a href="{{ path('frontend.view.vehicles') }}">Vehicles</a></li>
                     <li><a href="{{ path('frontend.view.buildings') }}">Buildings</a></li>
                     <li><a href="{{ path('frontend.view.map') }}">Map</a></li>
-                    <li>
-                        <a href=""><span class="label" ng-class="messages > 0 ? 'label-danger' : 'label-default' "><b>[[ messages ]]</b></span></a>
+                    <li dropdown>
+                        <a href="#" dropdown-toggle>
+                            Messages <span class="label" ng-class="messages.length > 0 ? 'label-danger' : 'label-default' "><b>[[ messages.length ]]</b></span>
+                            <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="message in messages track by $index"><a href="#" ng-click="open($index)">Scan #[[ $index + 1 ]]</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Actions</li>
+                            <li><a href="#">Check messages</a></li>
+                        </ul>
                     </li>
+                    {{ include('@MainFrontend/Default/_navbar_messages.html.twig') }}
                 </ul>
             {% endif %}
             <ul class="nav navbar-nav navbar-right navbar-user">

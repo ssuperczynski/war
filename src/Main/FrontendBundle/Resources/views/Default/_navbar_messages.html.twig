@@ -1,0 +1,31 @@
+<script type="text/ng-template" id="navbarModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Scan message user: [[ messages.nr ]]</h3>
+    </div>
+    <div class="modal-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Soldiers</td>
+                    <td>Food</td>
+                    <td>Concrete</td>
+                    <td>Iron</td>
+                    <td>Last activity</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>[[ messages.soldier ]]</td>
+                    <td>[[ messages.food ]]</td>
+                    <td>[[ messages.concrete ]]</td>
+                    <td>[[ messages.iron ]]</td>
+                    <td>[[ messages.time ]]</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
