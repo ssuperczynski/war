@@ -26,7 +26,7 @@
                 controller: 'ModalInstanceCtrl',
                 size: 'lg',
                 resolve: {
-                    messages: function () {
+                    message: function () {
                         return $scope.messages[id];
                     }
                 }
@@ -37,9 +37,9 @@
     }
 
     angular.module('war.navbar')
-        .controller('ModalInstanceCtrl', function ($scope, $modalInstance, messages) {
+        .controller('ModalInstanceCtrl', function ($scope, $modalInstance, message) {
 
-            $scope.messages = messages;
+            $scope.message = message;
 
 
             $scope.ok = function () {
