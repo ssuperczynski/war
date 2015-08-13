@@ -1,13 +1,13 @@
 ###Fault tolerant war simulator, based on Redis key value db with Apache Spark streaming and Azure Machine Learning.###
 
-Technology stack:
-Redis - cache database, pub/sub protocol support
-node.js - websocket support
-Symfony2 - web interface
-AngularJS - frontend support
-Hive, Apache Spark, logstash - Big data analytic support
-Azure ML - Machine learning to analyze Spark logs
-Scala - backend support
+Technology stack: <br>
+Redis - cache database, pub/sub protocol support <br>
+node.js - websocket support <br>
+Symfony2 - web interface <br>
+AngularJS - frontend support <br>
+Hive, Apache Spark, logstash - Big data analytic support <br>
+Azure ML - Machine learning to analyze Spark logs <br>
+Scala - backend support <br>
 
 * 1. Start supervisor: /usr/local/bin/supervisord
 * 2. Run supervisor CLI: http://localhost:9009
